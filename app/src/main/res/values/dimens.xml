@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_login_page">22sp</dimen>
+    <dimen name="progress_dialog_content_padding">10dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_text_margin_start">16dp</dimen>
+    <dimen name="progress_text_size">16sp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="toolbar_title_paddingStart">-45dp</dimen>
+    <dimen name="edittext_general_padding">16dp</dimen>
+    <dimen name="edittext_general_text_size">14sp</dimen>
+    <dimen name="divider_marginTop">15dp</dimen>
+    <dimen name="divider_marginBottom">10dp</dimen>
+    <dimen name="grey_border_stroke_size">1dp</dimen>
+    <dimen name="button_background_radius">5dp</dimen>
+    <dimen name="splash_screen_sub_title_text_size">20sp</dimen>
+    <dimen name="splash_screen_title_text_size">26sp</dimen>
+    <dimen name="add_product_header_image_height">250dp</dimen>
+    <dimen name="add_update_product_icon_padding">16dp</dimen>
+</resources>

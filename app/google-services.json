@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "663388067113",
+    "project_id": "brickmatekotlin-9a35f",
+    "storage_bucket": "brickmatekotlin-9a35f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663388067113:android:62e8c23715673c40f2d338",
+        "android_client_info": {
+          "package_name": "com.example.brickmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663388067113-tshgqmki6h6kvvlre7bu08phoea8fcv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.brickmate",
+            "certificate_hash": "77c715c0e8f7190b4b1beb8f6a5fd264c1c935c2"
+          }
+        },
+        {
+          "client_id": "663388067113-ahhlrhq6j9af90274a6nfsn497r45v00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYxrwKPLUOBvWF8g4Nc2SVBC48Mc2zZB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663388067113-ahhlrhq6j9af90274a6nfsn497r45v00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

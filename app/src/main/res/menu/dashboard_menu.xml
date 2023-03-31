@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_user"
+        android:icon="@drawable/ic_vector_account"
+        android:title="@string/action_account"
+        android:orderInCategory="0"
+        app:showAsAction="always"/>
+    <item android:id="@+id/action_logout"
+        android:icon="@drawable/ic_vector_logout"
+        android:title="@string/action_log_out"
+        android:orderInCategory="1"
+        app:showAsAction="always"/>
+
+
+</menu>
