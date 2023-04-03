@@ -11,7 +11,7 @@
     <string name="err_msg_enter_password">Please enter your password</string>
     <string name="err_msg_login_credential_success">Login details valid</string>
     <string name="please_click_back_again_to_exit">Click back again to exit</string>
-    <string name="please_wait">Please wait...</string>
+    <string name="please_wait">Please wait…</string>
     <string name="create_an_account">Create an account</string>
     <string name="et_hint_enter_firstname">Enter firstname</string>
     <string name="et_hint_enter_lastname">Enter lastname</string>
@@ -42,7 +42,7 @@
     <string name="lbl_radio_button_same">Same</string>
     <string name="lbl_radio_button_other">Other</string>
     <string name="hint_enter_delivery_address">Enter delivery address</string>
-    <string name="hint_enter_delivery_landmark">Enter delivery landmark</string>
+    <string name="hint_enter_delivery_landmark">Delivery landmark</string>
     <string name="err_msg_enter_phone">Please enter 10 digit mobile number</string>
     <string name="action_add_product">Add new product</string>
     <string name="content_description">image</string>
@@ -51,4 +51,22 @@
     <string name="et_hint_product_unit">Enter unit of measurement</string>
     <string name="et_hint_product_sell_price">Enter product sell price</string>
     <string name="et_hint_product_gst">Enter product GST rate (%)</string>
+    <string name="read_storage_permission_denied">Oops, you just denied the permission for storage. You can also allow in from settings.</string>
+    <string name="image_selection_failed">Image selection Failed!</string>
+    <string name="err_msg_select_product_image">Select a product image</string>
+    <string name="err_msg_enter_product_title">Please enter product name</string>
+    <string name="err_msg_enter_product_price">Please enter product price</string>
+    <string name="err_msg_enter_product_description">Please enter product description</string>
+    <string name="err_msg_enter_product_uom">Please enter product\'s unit of measurement</string>
+    <string name="err_msg_enter_product_gst_rate">Please enter product GST rate</string>
+    <string name="product_upload_success_msg">Product added successfully</string>
+    <string name="search">Search...</string>
+    <string name="no_address_found">No Addresses Found</string>
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_zip_code">Zipcode</string>
+    <string name="hint_additional_note">Add delivery note</string>
+    <string name="btn_lbl_submit">Submit</string>
+    <string name="hint_other_details">Other details</string>
 </resources>

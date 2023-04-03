@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/iv_product_image"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
@@ -26,10 +27,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Bricks"
-
+                android:padding="5dp"
                 android:textSize="28sp"
                 style="@style/TextViewBold"
                 android:layout_marginStart="@dimen/divider_marginTop"
@@ -48,6 +50,7 @@
                     style="@style/TextViewBold"
                     android:text="Description"/>
                 <TextView
+                    android:id="@+id/tv_product_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -69,6 +72,7 @@
                     style="@style/TextViewBold"
                     android:text="Unit"/>
                 <TextView
+                    android:id="@+id/tv_product_uom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -88,8 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     style="@style/TextViewBold"
-                    android:text="Sell Price"/>
+                    android:text="Sell Price(Rs)"/>
                 <TextView
+                    android:id="@+id/tv_product_sell_price"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -111,6 +116,7 @@
                     style="@style/TextViewBold"
                     android:text="GST rate(%)"/>
                 <TextView
+                    android:id="@+id/tv_product_gst_rate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -124,6 +130,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_item_product"
         app:layout_constraintBottom_toBottomOf="parent">

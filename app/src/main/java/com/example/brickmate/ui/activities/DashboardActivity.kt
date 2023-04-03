@@ -109,7 +109,9 @@ class DashboardActivity : BaseActivity(), OnClickListener {
                 startActivity(intent)
             }
             R.id.cl_order -> {
-                Toast.makeText(this, "Contact Developer", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Contact Developer", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@DashboardActivity, OrderActivity::class.java)
+                startActivity(intent)
             }
             R.id.cl_order_list -> {
                 Toast.makeText(this, "Contact Developer", Toast.LENGTH_SHORT).show()

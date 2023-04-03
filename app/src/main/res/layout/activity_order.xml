@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_light_grey"
+    tools:context=".ui.activities.OrderActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_order_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_title_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start|center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:text="@string/dashboard_grid_order"
+            android:textAllCaps="false"
+            style="@style/TextViewBold"
+            android:textColor="@color/color_primary_text"
+            android:textSize="@dimen/toolbar_title_text_size" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/btn_order_add_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="visible"
+        style="@style/TextViewBold"
+        android:text="Add Customer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_order_activity"/>
+
+    <LinearLayout
+        android:id="@+id/ll_order_customer_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        android:background="@drawable/secondary_item_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_order_activity">
+        <TextView
+            android:id="@+id/tv_order_customer_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewBold"
+            android:textSize="18sp"
+            android:textColor="@color/purple_500"
+            tools:text="John Doe"/>
+        <TextView
+            android:id="@+id/tv_order_customer_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/TextViewRegular"
+            android:textSize="14sp"
+            android:textColor="@color/color_secondary_text"
+            tools:text="9876543210"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewRegular"
+            android:text="Select Address"
+            android:layout_marginTop="@dimen/divider_marginTop"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/divider_marginTop"
+            android:tag="Select Address"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_order_add_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Add Products"
+        style="@style/TextViewBold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_order_customer_detail"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

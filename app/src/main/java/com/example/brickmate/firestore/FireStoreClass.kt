@@ -1,18 +1,20 @@
 package com.example.brickmate.firestore
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import com.example.brickmate.model.Customer
+import com.example.brickmate.model.Product
 import com.example.brickmate.model.User
-import com.example.brickmate.ui.activities.AddCustomerActivity
-import com.example.brickmate.ui.activities.CustomerActivity
-import com.example.brickmate.ui.activities.LoginActivity
-import com.example.brickmate.ui.activities.RegisterActivity
+import com.example.brickmate.ui.activities.*
 import com.example.brickmate.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class FireStoreClass {
 
@@ -93,7 +95,7 @@ class FireStoreClass {
             }
     }
 
-    fun getCustomerListFromFireStore(activity: CustomerActivity) {
+    fun getCustomerListFromFireStore(activity: Activity) {
         mFireStore.collection(Constants.CUSTOMERS)
             .get()
             .addOnSuccessListener { document ->
@@ -105,12 +107,91 @@ class FireStoreClass {
                     customer!!.customer_id = i.id
                     customerList.add(customer)
                 }
-                activity.successGetCustomerListFromFireStore(customerList)
+                when(activity){
+                    is CustomerActivity ->{
+                        activity.successGetCustomerListFromFireStore(customerList)
+                    }
+                    is SelectCustomerActivity -> {
+                        activity.successGetCustomerListFromFireStore(customerList)
+                    }
+                }
+
             }
             .addOnFailureListener { e ->
-                activity.hideProgressDialog()
+                when(activity){
+                    is CustomerActivity ->{
+                        activity.hideProgressDialog()
+                    }
+                    is SelectCustomerActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
                 Log.e(activity.javaClass.simpleName, "Error getting customer list.", e)
             }
+    }
+
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType : String){
+        val sRef : StorageReference = FirebaseStorage.getInstance().reference.child(
+            imageType + System.currentTimeMillis() + "."
+                    + Constants.getFileExtension(activity, imageFileURI)
+        )
+
+        sRef.putFile(imageFileURI!!).addOnSuccessListener { taskSnapShot ->
+            // The image upload is a success
+            Log.e("Firebase Image URL", taskSnapShot.metadata!!.reference!!.downloadUrl.toString())
+
+            // Get the downloadable URL from the task snapshot
+            taskSnapShot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri ->
+                Log.e("Downloadable Image URL", uri.toString())
+                when(activity){
+                    is AddProductActivity -> {
+                        activity.imageUploadSuccess(uri.toString())
+                    }
+                }
+            }
+        }.addOnFailureListener { exception ->
+            when (activity) {
+                is AddProductActivity -> {
+                    activity.hideProgressDialog()
+                }
+            }
+            Log.e(activity.javaClass.simpleName, exception.message, exception)
+        }
+    }
+
+    fun uploadProductDetails(activity: AddProductActivity, product: Product) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document()
+            .set(product, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productUploadSuccessToCloud()
+            }
+            .addOnFailureListener { e->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName,
+                    "Error while uploading product details", e)
+            }
+
+    }
+
+    fun getProductListFromFireStore(activity: ProductActivity) {
+            mFireStore.collection(Constants.PRODUCTS)
+                .get()
+                .addOnSuccessListener { document ->
+                    Log.e("Products List", document.documents.toString())
+                    val productsList: ArrayList<Product> = ArrayList()
+                    for (i in document.documents){
+                        val product = i.toObject(Product::class.java)
+                        product!!.product_id = i.id
+                        productsList.add(product)
+                    }
+                    activity.successGetProductListFromFireStore(productsList)
+                }
+                .addOnFailureListener {e->
+                    activity.hideProgressDialog()
+                    Log.e(activity.javaClass.simpleName,
+                        "Error while getting products", e)
+                }
     }
 
 

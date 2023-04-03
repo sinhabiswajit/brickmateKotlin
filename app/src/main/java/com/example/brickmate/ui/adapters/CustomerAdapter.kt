@@ -19,7 +19,7 @@ class CustomerAdapter(
     private var list : ArrayList<Customer>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MyViewHolder(
+        return CustomerViewHolder(
             LayoutInflater.from(context).inflate(
             R.layout.item_customer,
             parent,
@@ -33,7 +33,7 @@ class CustomerAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val model = list[position]
-        if (holder is MyViewHolder){
+        if (holder is CustomerViewHolder){
             holder.name.text = model.name
             holder.phone.text = model.phone
             holder.email.text = model.email
@@ -46,7 +46,7 @@ class CustomerAdapter(
         }
     }
 }
-    private class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    private class CustomerViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val name : TextView = view.findViewById(R.id.tv_customer_name)
         val phone : TextView = view.findViewById(R.id.tv_customer_phone)
         val email : TextView = view.findViewById(R.id.tv_customer_email)

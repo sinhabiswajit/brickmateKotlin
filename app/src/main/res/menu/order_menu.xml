@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item android:id="@+id/action_search_customer"
+    <item android:id="@+id/action_search_order_customer"
         android:icon="@drawable/ic_vector_search"
         android:title="@string/search"
         android:orderInCategory="0"
         app:showAsAction="always|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
-
-    <item android:id="@+id/action_add_customer"
-        android:icon="@drawable/ic_vector_add_customer"
-        android:title="@string/action_add_customer"
-        android:orderInCategory="1"
-        app:showAsAction="always"/>
 </menu>

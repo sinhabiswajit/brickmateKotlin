@@ -17,4 +17,11 @@
     <dimen name="splash_screen_title_text_size">26sp</dimen>
     <dimen name="add_product_header_image_height">250dp</dimen>
     <dimen name="add_update_product_icon_padding">16dp</dimen>
+    <dimen name="primary_text_size">18sp</dimen>
+    <dimen name="rv_address_list_marginTop">16dp</dimen>
+    <dimen name="no_data_found_textSize">20sp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="et_text_size">16sp</dimen>
+    <dimen name="btn_padding">8dp</dimen>
+    <dimen name="btn_text_size">18sp</dimen>
 </resources>

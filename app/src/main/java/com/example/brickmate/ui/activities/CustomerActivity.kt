@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.LinearLayout
-import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,11 +13,15 @@ import com.example.brickmate.R
 import com.example.brickmate.firestore.FireStoreClass
 import com.example.brickmate.model.Customer
 import com.example.brickmate.ui.adapters.CustomerAdapter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CustomerActivity : BaseActivity() {
 
     private var toolBarCustomerActivity : Toolbar? = null
     private lateinit var rvCustomerList : RecyclerView
+    private lateinit var tempCustomerArrayList: ArrayList<Customer>
+    private lateinit var customerArrayList : ArrayList<Customer>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,35 @@ class CustomerActivity : BaseActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.action_search_customer -> {
+                val searchView = item.actionView as SearchView
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        tempCustomerArrayList.clear()
+                        val searchText = newText!!.lowercase(Locale.getDefault())
+                        if (searchText.isNotEmpty()){
+                            customerArrayList.forEach {
+                                if (it.name.lowercase(Locale.getDefault()).contains(searchText) || it.phone.contains(searchText)){
+                                    tempCustomerArrayList.add(it)
+                                }
+                            }
+                            rvCustomerList.layoutManager = LinearLayoutManager(this@CustomerActivity)
+                            rvCustomerList.setHasFixedSize(true)
+                            val adapter = CustomerAdapter(this@CustomerActivity, tempCustomerArrayList)
+                            rvCustomerList.adapter = adapter
+                        }
+                        else{
+                            successGetCustomerListFromFireStore(customerArrayList)
+                        }
+                        return false
+                    }
+                })
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -56,6 +88,8 @@ class CustomerActivity : BaseActivity() {
     private fun initializeVars() {
         toolBarCustomerActivity = findViewById(R.id.toolbar_customer_activity)
         rvCustomerList = findViewById(R.id.rv_customer_list)
+        customerArrayList = ArrayList()
+        tempCustomerArrayList = ArrayList()
     }
     private fun setUpActionBar() {
         setSupportActionBar(toolBarCustomerActivity)
@@ -71,6 +105,7 @@ class CustomerActivity : BaseActivity() {
 
     fun successGetCustomerListFromFireStore(customerList: ArrayList<Customer>) {
         hideProgressDialog()
+        customerArrayList = customerList
         //Toast.makeText(this,"Success", Toast.LENGTH_SHORT).show()
         if (customerList.size > 0){
             rvCustomerList.layoutManager = LinearLayoutManager(this)

@@ -7,18 +7,36 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brickmate.R
+import com.example.brickmate.firestore.FireStoreClass
+import com.example.brickmate.model.Product
+import com.example.brickmate.ui.adapters.ProductAdapter
+import java.util.ArrayList
 
-class ProductActivity : AppCompatActivity() {
+class ProductActivity : BaseActivity() {
     private var toolBarProductActivity : Toolbar? = null
     private lateinit var rvProductList : RecyclerView
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
 
         initializeVars()
         setUpActionBar()
+        //getProductList()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getProductList()
+    }
+
+    private fun getProductList() {
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FireStoreClass().getProductListFromFireStore(this@ProductActivity)
     }
 
     private fun initializeVars() {
@@ -51,6 +69,16 @@ class ProductActivity : AppCompatActivity() {
         }
         toolBarProductActivity?.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    fun successGetProductListFromFireStore(productsList: ArrayList<Product>) {
+        hideProgressDialog()
+        if (productsList.size > 0){
+            rvProductList.layoutManager = LinearLayoutManager(this)
+            rvProductList.setHasFixedSize(true)
+            val adapterProducts = ProductAdapter(this@ProductActivity, productsList)
+            rvProductList.adapter = adapterProducts
         }
     }
 }
