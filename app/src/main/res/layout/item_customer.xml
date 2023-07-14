@@ -4,186 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
     android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/ll_customer_name_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/divider_marginTop"
-        android:layout_marginTop="@dimen/divider_marginTop"
         android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_vector_customer" />
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_vector_avatar" />
 
-        <TextView
-            android:id="@+id/tv_customer_name"
-            style="@style/TextViewBold"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="center_vertical"
-            android:maxLines="2"
-            android:textColor="@color/purple_700"
-            android:textSize="14sp"
-            tools:text="John Doe" />
+            android:layout_weight="10"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_customer_name"
+                style="@style/TextViewBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:textColor="@color/purple_700"
+                android:textSize="14sp"
+                tools:text="John Doe" />
+
+            <TextView
+                android:id="@+id/tv_customer_phone"
+                style="@style/TextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="12sp"
+                tools:text="+91 9706901234" />
+
+        </LinearLayout>
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_vector_phone" />
+            android:layout_gravity="center"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_vector_front_arrow_dark"/>
 
-        <TextView
-            android:id="@+id/tv_customer_phone"
-            style="@style/TextViewBold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="center_vertical"
-            android:maxLines="2"
-            android:textColor="@color/purple_700"
-            android:textSize="14sp"
-            tools:text="+91 9706901234" />
+
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="5dp"
         android:background="@color/color_light_grey"
         app:layout_constraintTop_toBottomOf="@id/ll_customer_name_phone" />
 
-    <LinearLayout
-        android:id="@+id/ll_customer_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/divider_marginTop"
-        android:layout_marginTop="@dimen/divider_marginTop"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_view">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_customer_email"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/divider_marginTop"-->
+<!--        android:layout_marginTop="@dimen/divider_marginTop"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/divider_view">-->
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_vector_email" />
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/ic_vector_email" />-->
 
-        <TextView
-            android:id="@+id/tv_customer_email"
-            style="@style/TextViewRegular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:gravity="center_vertical"
-            android:maxLines="2"
-            android:textSize="14sp"
-            tools:text="johnDoe@email.com" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_customer_email"-->
+<!--            style="@style/TextViewRegular"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="9"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:maxLines="2"-->
+<!--            android:textSize="14sp"-->
+<!--            tools:text="johnDoe@email.com" />-->
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:id="@+id/ll_customer_addresses"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="@dimen/divider_marginTop"
-        android:layout_marginStart="@dimen/divider_marginTop"
-        android:layout_marginEnd="@dimen/divider_marginTop"
-        android:padding="10dp"
-        android:orientation="horizontal"
-        android:background="@drawable/secondary_item_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_customer_email">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_customer_addresses"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginTop="@dimen/divider_marginTop"-->
+<!--        android:layout_marginStart="@dimen/divider_marginTop"-->
+<!--        android:layout_marginEnd="@dimen/divider_marginTop"-->
+<!--        android:padding="10dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:background="@drawable/item_dashboard_background"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/ll_customer_email">-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            style="@style/TextViewBold"
-            android:text="Addresses"
-            android:textSize="14sp"
-            android:layout_gravity="center_vertical"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_vector_front_arrow_dark"/>
-
-
-
-
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="9"-->
+<!--            style="@style/TextViewBold"-->
+<!--            android:text="Addresses"-->
+<!--            android:textSize="14sp"-->
+<!--            android:layout_gravity="center_vertical"/>-->
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:src="@drawable/ic_vector_front_arrow_dark"/>-->
 
 
 
-    <LinearLayout
-        android:id="@+id/ll_customer_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/divider_marginTop"
-        android:padding="5dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_customer_addresses">
 
-        <TextView
-            android:id="@+id/tv_customer_update"
-            style="@style/TextViewBold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="@drawable/secondary_item_button_background"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Update"
-            android:textAllCaps="true"
-            android:textColor="@color/purple_700"
-            android:textSize="14sp" />
+<!--    </LinearLayout>-->
 
-        <TextView
-            android:id="@+id/tv_customer_delete"
-            style="@style/TextViewBold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="@drawable/secondary_item_button_background"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Delete"
-            android:textAllCaps="true"
-            android:textColor="@color/purple_700"
-            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tv_customer_orders"
-            style="@style/TextViewBold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="@drawable/secondary_item_button_background"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Orders"
-            android:textAllCaps="true"
-            android:textColor="@color/purple_700"
-            android:textSize="14sp" />
 
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_customer_buttons"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/divider_marginTop"-->
+<!--        android:padding="5dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/ll_customer_addresses">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_customer_update"-->
+<!--            style="@style/TextViewBold"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="3"-->
+<!--            android:background="@drawable/secondary_item_button_background"-->
+<!--            android:foreground="?attr/selectableItemBackground"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Update"-->
+<!--            android:textAllCaps="true"-->
+<!--            android:textColor="@color/purple_700"-->
+<!--            android:textSize="14sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_customer_delete"-->
+<!--            style="@style/TextViewBold"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="3"-->
+<!--            android:background="@drawable/secondary_item_button_background"-->
+<!--            android:foreground="?attr/selectableItemBackground"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Delete"-->
+<!--            android:textAllCaps="true"-->
+<!--            android:textColor="@color/purple_700"-->
+<!--            android:textSize="14sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_customer_orders"-->
+<!--            style="@style/TextViewBold"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="3"-->
+<!--            android:background="@drawable/secondary_item_button_background"-->
+<!--            android:foreground="?attr/selectableItemBackground"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Orders"-->
+<!--            android:textAllCaps="true"-->
+<!--            android:textColor="@color/purple_700"-->
+<!--            android:textSize="14sp" />-->
+
+<!--    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,8 +60,7 @@ class RegisterActivity : BaseActivity() {
                             etEmail?.text.toString().trim { it <= ' ' })
                         FireStoreClass().registerUser(this@RegisterActivity, user)
 
-                        FirebaseAuth.getInstance().signOut()
-                        finish()
+                        //FirebaseAuth.getInstance().signOut()
 
                     }
                     else{
@@ -77,6 +76,8 @@ class RegisterActivity : BaseActivity() {
         Toast.makeText(this@RegisterActivity,
             resources.getString(R.string.success_msg_registration),
             Toast.LENGTH_LONG).show()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setupActionBar() {
@@ -114,6 +115,14 @@ class RegisterActivity : BaseActivity() {
             }
             TextUtils.isEmpty(etEmail?.text.toString().trim { it <= ' ' }) ->{
                 Toast.makeText(this,resources.getString(R.string.err_msg_enter_email), Toast.LENGTH_SHORT).show()
+                false
+            }
+            !android.util.Patterns.EMAIL_ADDRESS.matcher(etEmail?.text.toString().trim { it <= ' ' }).matches() -> {
+                Toast.makeText(
+                    this,
+                    resources.getString(R.string.err_msg_enter_valid_email),
+                    Toast.LENGTH_SHORT
+                ).show()
                 false
             }
             TextUtils.isEmpty(etPassword?.text.toString().trim { it <= ' ' }) ->{

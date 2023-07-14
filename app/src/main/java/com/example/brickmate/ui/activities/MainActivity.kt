@@ -26,21 +26,21 @@ class MainActivity : AppCompatActivity() {
         @Suppress("DEPRECATION")
         Handler().postDelayed(
             {
-                if (status){
-                    startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
-                }else{
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                }
-                finish()
-
-//                val currentUserID = FireStoreClass().getCurrentUserID()
-//
-//                if (currentUserID.isNotEmpty()){
+//                if (status){
 //                    startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
 //                }else{
 //                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
 //                }
 //                finish()
+
+                val currentUserID = FireStoreClass().getCurrentUserID()
+
+                if (currentUserID.isNotEmpty()){
+                    startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
+                }else{
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                }
+                finish()
             },2000
         )
     }

@@ -41,7 +41,7 @@
         android:textColor="@color/purple_500"
         android:textSize="@dimen/primary_text_size"
         android:gravity="center"
-        android:background="@drawable/secondary_item_background"
+        android:background="@drawable/item_dashboard_background"
         android:text="Add Addresses"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

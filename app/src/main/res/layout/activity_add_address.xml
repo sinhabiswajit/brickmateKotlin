@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/et_full_name"
+                    android:id="@+id/et_add_address_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextViewRegular"
@@ -81,7 +81,7 @@
                 app:layout_constraintTop_toBottomOf="@id/til_full_name">
 
                 <EditText
-                    android:id="@+id/et_phone_number"
+                    android:id="@+id/et_add_address_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextViewRegular"
@@ -107,7 +107,7 @@
                 app:layout_constraintTop_toBottomOf="@id/til_phone_number">
 
                 <EditText
-                    android:id="@+id/et_address"
+                    android:id="@+id/et_add_address_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextViewRegular"
@@ -134,10 +134,10 @@
                 app:layout_constraintTop_toBottomOf="@id/til_address">
 
                 <EditText
-                    android:id="@+id/et_zip_code"
+                    android:id="@+id/et_add_address_zip_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="@dimen/et_padding"
                     android:textColor="@color/color_primary_text"
                     android:textSize="@dimen/et_text_size" />
@@ -160,7 +160,7 @@
                 app:layout_constraintTop_toBottomOf="@id/til_zip_code">
 
                 <EditText
-                    android:id="@+id/et_additional_note"
+                    android:id="@+id/et_add_address_landmark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextViewRegular"

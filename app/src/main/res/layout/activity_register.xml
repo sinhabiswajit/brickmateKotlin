@@ -108,7 +108,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                android:hint="@string/et_hint_enter_email"
+                android:hint="@string/et_hint_regiter_enter_email"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -136,6 +136,9 @@
                 android:layout_marginEnd="16dp"
                 android:hint="@string/et_hint_enter_password"
                 android:textColorHint="@color/color_secondary_text"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/color_light_grey"
+                app:passwordToggleDrawable="@drawable/ic_vector_eye"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_register_email">
@@ -163,6 +166,9 @@
                 android:layout_marginEnd="16dp"
                 android:hint="@string/et_hint_enter_confirm_password"
                 android:textColorHint="@color/color_secondary_text"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/color_light_grey"
+                app:passwordToggleDrawable="@drawable/ic_vector_eye"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_register_password">

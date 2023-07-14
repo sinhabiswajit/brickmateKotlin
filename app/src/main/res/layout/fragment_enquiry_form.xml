@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.EnquiryFormFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_enquiry_customer_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/et_hint_enter_name"
+                android:textColorHint="@color/color_secondary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/et_enquiry_customer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewRegular"
+                    android:inputType="text"
+                    android:padding="@dimen/edittext_general_padding"
+                    android:textColor="@color/color_primary_text"
+                    android:textSize="@dimen/edittext_general_text_size" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_enquiry_customer_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/et_hint_enter_phone"
+                android:textColorHint="@color/color_secondary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_enquiry_customer_name">
+
+                <EditText
+                    android:id="@+id/et_enquiry_customer_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewRegular"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:padding="@dimen/edittext_general_padding"
+                    android:textColor="@color/color_primary_text"
+                    android:textSize="@dimen/edittext_general_text_size" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_enquiry_customer_location"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/et_hint_enter_location"
+                android:textColorHint="@color/color_secondary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_enquiry_customer_phone">
+
+                <EditText
+                    android:id="@+id/et_enquiry_customer_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewRegular"
+                    android:inputType="text"
+                    android:padding="@dimen/edittext_general_padding"
+                    android:textColor="@color/color_primary_text"
+                    android:textSize="@dimen/edittext_general_text_size" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_products_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_light_blue"
+                app:layout_constraintTop_toBottomOf="@id/til_enquiry_customer_location">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="12">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
+                        style="@style/TextViewBold"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/dashboard_grid_products"
+                        android:textColor="@color/purple_700"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_add_product"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginEnd="11dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/secondary_item_background"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:text="Add"
+                        android:textColor="@color/color_off_white"
+                        style="@style/TextViewBold"
+                        android:padding="5dp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewRegular"
+                    android:padding="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/inquiry_product_description"
+                    android:textColor="@color/purple_700"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_products_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/ll_products_section">
+                <TextView
+                    android:id="@+id/tv_lbl_product_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="end|center_vertical"
+                    style="@style/TextViewBold"
+                    android:textColor="@color/purple_700"
+                    android:text="Total : "
+                    android:padding="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <TextView
+                    android:id="@+id/tv_product_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="end|center_vertical"
+                    style="@style/TextViewBold"
+                    android:textColor="@color/purple_700"
+                    android:text="Rs 56000"
+                    android:padding="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <View
+                android:id="@+id/divider_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_light_grey"
+                app:layout_constraintTop_toBottomOf="@id/cl_products_total"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_selected_products"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_view"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_enquiry_additional_info"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/et_hint_additional_info"
+                android:textColorHint="@color/color_secondary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_selected_products">
+
+                <EditText
+                    android:id="@+id/et_enquiry_additional_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewRegular"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:padding="@dimen/edittext_general_padding"
+                    android:textColor="@color/color_primary_text"
+                    android:textSize="@dimen/edittext_general_text_size" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_submit_enquiry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit Enquiry"
+                android:textAllCaps="false"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_enquiry_additional_info"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

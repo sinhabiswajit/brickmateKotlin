@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="TextViewBold">
         <item name="android:fontFamily">@font/open_sans_bold</item>
         <item name="fontFamily">@font/open_sans_bold</item>
@@ -32,4 +33,11 @@
         <item name="android:fontFamily">@font/open_sans_bold</item>
         <item name="fontFamily">@font/open_sans_bold</item>
     </style>
+
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@color/color_dark_grey</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
 </resources>

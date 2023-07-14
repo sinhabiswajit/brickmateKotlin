@@ -6,7 +6,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brickmate.R
@@ -15,9 +19,11 @@ import com.example.brickmate.model.Product
 import com.example.brickmate.ui.adapters.ProductAdapter
 import java.util.ArrayList
 
-class ProductActivity : BaseActivity() {
+class ProductActivity : BaseActivity(), View.OnClickListener {
     private var toolBarProductActivity : Toolbar? = null
     private lateinit var rvProductList : RecyclerView
+    private lateinit var llNoProductFound : LinearLayout
+    private lateinit var btnAddProduct : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +33,7 @@ class ProductActivity : BaseActivity() {
         initializeVars()
         setUpActionBar()
         //getProductList()
+        btnAddProduct.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -42,6 +49,8 @@ class ProductActivity : BaseActivity() {
     private fun initializeVars() {
         toolBarProductActivity = findViewById(R.id.toolbar_product_activity)
         rvProductList = findViewById(R.id.rv_product_list)
+        llNoProductFound = findViewById(R.id.ll_no_product_found)
+        btnAddProduct = findViewById(R.id.btn_product_activity_add_product)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -71,14 +80,32 @@ class ProductActivity : BaseActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
     }
+    private fun sortProductsAlphabetically(productList: ArrayList<Product>) {
+        productList.sortBy { it.name }
+    }
 
     fun successGetProductListFromFireStore(productsList: ArrayList<Product>) {
         hideProgressDialog()
         if (productsList.size > 0){
+            rvProductList.visibility = View.VISIBLE
+            llNoProductFound.visibility = View.GONE
             rvProductList.layoutManager = LinearLayoutManager(this)
             rvProductList.setHasFixedSize(true)
+            sortProductsAlphabetically(productsList)
             val adapterProducts = ProductAdapter(this@ProductActivity, productsList)
             rvProductList.adapter = adapterProducts
+        }else{
+            rvProductList.visibility = View.GONE
+            llNoProductFound.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_product_activity_add_product -> {
+                val intent = Intent(this@ProductActivity, AddProductActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

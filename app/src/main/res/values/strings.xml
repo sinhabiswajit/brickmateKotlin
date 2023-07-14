@@ -15,7 +15,7 @@
     <string name="create_an_account">Create an account</string>
     <string name="et_hint_enter_firstname">Enter firstname</string>
     <string name="et_hint_enter_lastname">Enter lastname</string>
-    <string name="et_hint_enter_email">Enter email</string>
+    <string name="et_hint_enter_email">Enter email(optional)</string>
     <string name="et_hint_enter_confirm_password">Confirm password</string>
     <string name="err_msg_enter_first_name">Please enter first name</string>
     <string name="err_msg_enter_last_name">Please enter last name</string>
@@ -25,7 +25,7 @@
     <string name="dashboard">Dashboard</string>
     <string name="action_log_out">Logout</string>
     <string name="action_account">user</string>
-    <string name="footer_text">Design by Indigi Consulting and Solutions pvt. ltd.</string>
+    <string name="footer_text">Design by Indigi Consulting and Solutions (P) Ltd.</string>
     <string name="image">image</string>
     <string name="dashboard_grid_customer">Customers</string>
     <string name="dashboard_grid_products">Products</string>
@@ -61,7 +61,7 @@
     <string name="err_msg_enter_product_gst_rate">Please enter product GST rate</string>
     <string name="product_upload_success_msg">Product added successfully</string>
     <string name="search">Search...</string>
-    <string name="no_address_found">No Addresses Found</string>
+    <string name="no_address_found">No Address Found</string>
     <string name="hint_full_name">Full name</string>
     <string name="hint_phone_number">Phone number</string>
     <string name="hint_address">Address</string>
@@ -69,4 +69,66 @@
     <string name="hint_additional_note">Add delivery note</string>
     <string name="btn_lbl_submit">Submit</string>
     <string name="hint_other_details">Other details</string>
+    <string name="err_msg_enter_address">Please enter address</string>
+    <string name="err_msg_enter_zipcode">Please enter zipcode</string>
+    <string name="err_msg_enter_landmark">Please enter landmark</string>
+    <string name="err_msg_enter_valid_email_address">Please enter valid email</string>
+    <string name="lbl_product_description">Description</string>
+    <string name="lbl_product_unit">Unit of Measurement</string>
+    <string name="lbl_product_sell_price">Sell Price</string>
+    <string name="lbl_product_gst">GST rate (%)</string>
+    <string name="btn_lbl_add_to_order">Add to order</string>
+    <string name="btn_lbl_go_to_orders">Go to Orders</string>
+    <string name="tv_divider">/</string>
+    <string name="success_message_item_added_to_cart">Product added to cart!</string>
+    <string name="btn_lbl_checkout">Checkout</string>
+    <string name="lbl_subtotal">Sub Total</string>
+    <string name="lbl_gst_charge">GST amount (5%)</string>
+    <string name="lbl_total_amount">Total Amount</string>
+    <string name="hint_enter_capacity">Capacity</string>
+    <string name="msg_item_removed_successfully">Item removed successfully</string>
+    <string name="et_hint_enter_quantity">Enter Quantity</string>
+    <string name="select_product">Select Product</string>
+    <string name="order_summary">Order Details</string>
+    <string name="btn_lbl_place_order">Place Order</string>
+    <string name="search_customer_here">Search customer here ...</string>
+    <string name="et_hint_enter_zipcode">Enter zipcode</string>
+    <string name="et_hint_enter_landmark">Enter landmark</string>
+    <string name="et_hint_enter_gstin">Enter GSTIN number(optional)</string>
+    <string name="order_list">Order List</string>
+    <string name="et_hint_regiter_enter_email">Enter Email</string>
+    <string name="order_list_details">Order Details</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="et_hint_enter_name">Enter name</string>
+    <string name="et_hint_additional_info">Additional Infomation</string>
+    <string name="et_hint_enter_location">Location</string>
+    <string name="orders">Orders</string>
+    <string name="dropdown_icon">Dropdown Icon</string>
+    <string name="btn_lbl_update_product">Update</string>
+    <string name="btn_lbl_delete_product">Delete</string>
+    <string name="search_order_here">Search Order here ...</string>
+    <string name="edit_order">Edit Order</string>
+    <string name="add_product_title">Add Product</string>
+    <string name="add_button_label">Add</string>
+    <string name="cancel_button_label">Cancel</string>
+    <string name="et_hint_label_quantity">Quantity</string>
+    <string name="reset_password_description">Please enter your email below and submit. A link will be sent to your registered email ID.</string>
+    <string name="et_hint_email_id">Email ID</string>
+    <string name="email_sent_success">Password sent to registered email ID.</string>
+    <string name="inquiry_product_description">Select products using the Add button and add quantity for each product as per client.</string>
+    <string name="your_web_client_id">663388067113-mdsofmpodcmm4ji6rtuojaka5i2a3h4t.apps.googleusercontent.com</string>
+    <string name="customer_details">Customer Details</string>
+    <string name="et_hint_enter_site_person_contact">Site Person Contact No.(optional)</string>
+    <string name="err_msg_enter_valid_email">Please enter valid email address.</string>
+    <string name="et_hint_enter_gst">Enter GST(%)</string>
+    <string name="user_profile">User Profile</string>
+    <string-array name="delivery_status_options">
+        <item>Delivered</item>
+        <item>Pending</item>
+    </string-array>
+    <string-array name="paid_status_options">
+        <item>Paid</item>
+        <item>Pending</item>
+    </string-array>
 </resources>

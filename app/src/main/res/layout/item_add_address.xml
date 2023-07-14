@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/item_border_background_grey">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextViewBold"
+        android:padding="16dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:background="@color/color_light_blue_divider"
+        android:textColor="@color/purple_700"
+        android:text="Add Address"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_light_grey"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_address"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/hint_address"
+        android:textColorHint="@color/color_secondary_text">
+
+        <EditText
+            android:id="@+id/et_dialog_add_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewRegular"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:padding="@dimen/et_padding"
+            android:textColor="@color/color_primary_text"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_zip_code"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/hint_zip_code"
+        android:textColorHint="@color/color_secondary_text">
+
+        <EditText
+            android:id="@+id/et_dialog_add_zipcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="@dimen/et_padding"
+            android:textColor="@color/color_primary_text"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_additional_note"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/hint_enter_delivery_landmark"
+        android:textColorHint="@color/color_secondary_text">
+
+        <EditText
+            android:id="@+id/et_dialog_add_landmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewRegular"
+            android:inputType="text"
+            android:padding="@dimen/et_padding"
+            android:textColor="@color/color_primary_text"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/color_light_grey"/>
+
+
+
+</LinearLayout>

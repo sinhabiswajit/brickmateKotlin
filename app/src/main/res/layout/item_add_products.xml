@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_cart_child_add_product"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="10">
+
+            <Spinner
+                android:id="@+id/spinner_cart_product_title"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="5"
+                android:prompt="@string/select_product" />
+
+
+            <EditText
+                android:id="@+id/et_enter_cart_quantity"
+                style="@style/TextViewRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/item_border_background_grey"
+                android:gravity="center_vertical"
+                android:hint="Enter Quantity"
+                android:inputType="number"
+                android:minHeight="40dp"
+                android:padding="4dp"
+                android:textColor="@color/color_primary_text"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/iv_remove_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_vector_delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/item_small_semi_curved_button"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tv_spinner_product_item_price"
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/cart_item_price_textSize"
+                android:textStyle="bold"
+                tools:text="Rs100" />
+
+            <TextView
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/white"
+                android:textSize="@dimen/cart_item_price_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_spinner_product_item_uom"
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/cart_item_price_textSize"
+                android:textStyle="bold"
+                tools:text="kg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <CheckBox
+                android:id="@+id/cb_apply_gst"
+                style="@style/TextViewRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:checked="true"
+                android:text="Apply GST"
+                android:textColor="@color/purple_700"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_enter_cart_gst"
+                style="@style/TextViewRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/item_border_background_grey"
+                android:gravity="center_vertical"
+                android:hint="Enter GST"
+                android:inputType="number"
+                android:minHeight="40dp"
+                android:padding="4dp"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="%" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_product_sub_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtotal : Rs1000"
+                style="@style/TextViewRegular"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/tv_product_gst_charge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gst Charge : Rs10"
+                style="@style/TextViewRegular"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/tv_product_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Total : Rs1010"
+                style="@style/TextViewRegular"
+                android:textColor="@color/purple_700"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_light_grey" />
+
+</LinearLayout>

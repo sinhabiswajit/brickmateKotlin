@@ -21,7 +21,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
-    android:layout_marginTop="30dp"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent">
@@ -31,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"/>
+        app:layout_constraintGuide_percent="0.27"/>
 
     <ImageView
         android:id="@+id/iv_login_drawable"
@@ -51,7 +50,7 @@
         android:gravity="center"
         style="@style/TextViewBold"
         android:textSize="@dimen/title_login_page"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/login"
         android:textAllCaps="true"
         android:textColor="@color/color_primary_text"
@@ -91,28 +90,31 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="10"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/et_hint_enter_password"
         android:textColorHint="@color/color_secondary_text"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/color_light_grey"
+        app:passwordToggleDrawable="@drawable/ic_vector_eye"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_username">
 
         <EditText
             android:id="@+id/et_login_password"
+            style="@style/TextViewRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/TextViewRegular"
+            android:layout_weight="9"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             android:padding="16dp"
-            android:textSize="14sp"
             android:textColor="@color/color_primary_text"
-            tools:text="123456"/>
-
-
+            android:textSize="14sp"
+            tools:text="123456" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -122,18 +124,18 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cb_show_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextViewRegular"
-        android:layout_marginTop="10dp"
-        android:text="@string/show_password"
-        android:textColor="@color/color_secondary_text"
-        app:buttonTint="@color/purple_700"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guide_vertical"
-        app:layout_constraintTop_toBottomOf="@id/til_password"/>
+<!--    <androidx.appcompat.widget.AppCompatCheckBox-->
+<!--        android:id="@+id/cb_show_password"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        style="@style/TextViewRegular"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="@string/show_password"-->
+<!--        android:textColor="@color/color_secondary_text"-->
+<!--        app:buttonTint="@color/purple_700"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/guide_vertical"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/til_password"/>-->
 
     <TextView
         android:id="@+id/tv_forgot_password"
@@ -158,16 +160,18 @@
         android:text="Login"
         android:textAllCaps="false"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cb_show_password"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password"/>
 
 
     <LinearLayout
+        android:id="@+id/ll_don_t_have_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,7 +186,7 @@
             android:padding="5dp"
             android:text="@string/don_t_have_an_account"
             android:textColor="@color/color_secondary_text"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_sign_up"
@@ -194,9 +198,81 @@
             android:text="@string/sign_up"
             android:textStyle="bold"
             android:textColor="@color/color_secondary_text"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_or_separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ll_don_t_have_account">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/color_light_grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewRegular"
+            android:text="or"
+            android:textStyle="italic"
+            android:textColor="@color/color_secondary_text"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:background="@color/color_light_grey"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_google_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:padding="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center|center_vertical"
+        android:background="@drawable/item_border_background_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_or_separator">
+
+        <ImageView
+            android:id="@+id/btn_google_sign_in"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_google_icon" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextViewBold"
+            android:layout_weight="8"
+            android:gravity="center|center_vertical"
+            android:text="Continue with Google"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

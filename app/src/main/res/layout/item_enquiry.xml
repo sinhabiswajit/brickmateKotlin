@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_enquiry_date"
+            style="@style/TextViewBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_light_purple_500"
+            android:gravity="end"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:text="18-04-2023 - 18:17:59" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tv_enquiry_name"
+                style="@style/TextViewBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9.5"
+                android:textColor="@color/purple_700"
+                android:textSize="16sp"
+                tools:text="John Doe" />
+
+            <ImageView
+                android:id="@+id/iv_enquiry_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:src="@drawable/ic_vector_delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tv_enquiry_phone"
+                style="@style/TextViewRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="9.5"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="14sp"
+                tools:text="+91 9854214142" />
+
+            <ImageView
+                android:id="@+id/iv_enquiry_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="0.5"
+                android:src="@drawable/ic_vector_phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tv_enquiry_location"
+                style="@style/TextViewRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9.5"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="14sp"
+                tools:text="Dispur" />
+
+            <ImageView
+                android:id="@+id/iv_enquiry_message"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:layout_weight="0.5"
+                android:src="@drawable/ic_vector_flaticon_message" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_light_grey" />
+
+        <TextView
+            style="@style/TextViewBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Enquired About : "
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_enquiry_product_list"
+            style="@style/TextViewRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            tools:text="Sand, Bricks, Silt" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Remark : "
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_enquiry_additional_info"
+                style="@style/TextViewRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                tools:text="N/A" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

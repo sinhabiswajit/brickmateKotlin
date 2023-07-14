@@ -1,14 +1,18 @@
 package com.example.brickmate.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brickmate.R
 import com.example.brickmate.model.Product
+import com.example.brickmate.ui.activities.ProductDetailsActivity
+import com.example.brickmate.util.Constants
 import com.example.brickmate.util.GlideLoader
 
 class ProductAdapter(
@@ -31,22 +35,20 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val model = productList[position]
         if (holder is ProductViewHolder){
-            GlideLoader(context).loadProductPicture(model.product_image, holder.productImage)
             holder.productName.text = model.name
-            holder.productDescription.text = model.description
+            holder.productSellPrice.text = "Rs ${model.sell_price}"
             holder.productUOM.text = model.uom
-            holder.productSellPrice.text = model.sell_price
-            holder.productGSTRate.text = model.gst_rate
+            holder.itemView.setOnClickListener {
+                val intent = Intent(context, ProductDetailsActivity::class.java)
+                intent.putExtra(Constants.EXTRA_PRODUCT_ID, model.product_id)
+                context.startActivity(intent)
+            }
 
         }
     }
 }
 private class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view){
-    val productImage : ImageView = view.findViewById(R.id.iv_product_image)
-    val productName : TextView = view.findViewById(R.id.tv_product_name)
-    val productDescription : TextView = view.findViewById(R.id.tv_product_description)
-    val productUOM : TextView = view.findViewById(R.id.tv_product_uom)
-    val productSellPrice : TextView = view.findViewById(R.id.tv_product_sell_price)
-    val productGSTRate : TextView = view.findViewById(R.id.tv_product_gst_rate)
-
+    val productName : TextView = view.findViewById(R.id.tv_product_item_title)
+    val productUOM : TextView = view.findViewById(R.id.tv_product_item_uom)
+    val productSellPrice : TextView = view.findViewById(R.id.tv_product_item_price)
 }

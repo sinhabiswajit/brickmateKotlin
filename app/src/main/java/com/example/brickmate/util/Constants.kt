@@ -8,11 +8,25 @@ import android.webkit.MimeTypeMap
 
 object Constants {
 
+    const val REQUEST_CODE_UPDATE_CUSTOMER: Int = 10
+    const val EMAIL: String = "email"
+    const val GOOGLE: String = "google"
+    const val FACEBOOK: String = "facebook"
+    const val TWITTER: String = "twitter"
+    const val LOGGED_IN_WITH: String = "loggedInWith"
+    const val ENQUIRY: String = "enquiry"
+    const val ORDERS: String = "orders"
+    const val CART_ITEMS: String = "cart_items"
+    const val DEFAULT_PRODUCT_QUANTITY: String = "1"
+    const val CART_QUANTITY: String = "cart_quantity"
+    const val ADDRESSES: String = "addresses"
     const val CUSTOMER_DETAILS: String = "customer_details"
     const val CUSTOMER_ADDRESS_LIST: String = "customer_address_list"
     const val USERS: String = "users"
+    const val USER_ID: String = "user_id"
     const val CUSTOMERS: String = "customers"
     const val PRODUCTS : String = "products"
+    const val EXTRA_PRODUCT_ID: String = "extra_product_id"
 
     const val BRICKMATE_PREFERENCES: String = "BrickMatePrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
@@ -21,6 +35,7 @@ object Constants {
 
     const val READ_STORAGE_PERMISSION_CODE: Int = 2
     const val PICK_IMAGE_REQUEST_CODE : Int = 1
+    const val RC_SIGN_IN : Int = 5
 
     const val PRODUCT_IMAGE : String = "Product_image"
 

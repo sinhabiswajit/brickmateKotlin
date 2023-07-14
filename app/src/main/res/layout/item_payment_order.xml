@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_off_white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+       <TextView
+           android:id="@+id/tv_item_payment_order_id"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           style="@style/TextViewBold"
+           android:textColor="@color/color_dark_grey"
+           android:textSize="@dimen/secondary_text_size"
+           tools:text="ORDER-28042023-124133"/>
+        <TextView
+            android:id="@+id/tv_item_payment_order_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewRegular"
+            android:textColor="@color/color_dark_grey"
+            android:textSize="12sp"
+            tools:text="28-04-2023 - 12:41:33"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/tv_item_payment_order_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                style="@style/TextViewBold"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/secondary_text_size"
+                tools:text="Rs 34550"/>
+            <TextView
+                android:id="@+id/tv_item_payment_order_paid_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="center"
+                style="@style/TextViewBold"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/item_background_status_circular_red"
+                tools:text="Pending"/>
+        </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_light_grey"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

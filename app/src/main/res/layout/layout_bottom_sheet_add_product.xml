@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_cart_child_add_product"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_light_purple_500"
+        android:text="ADD PRODUCT"
+        style="@style/TextViewBold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:weightSum="10">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="end">-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/TextViewBold"-->
+<!--                android:gravity="end"-->
+<!--                android:textSize="14sp"-->
+<!--                android:text="Product Total :"-->
+<!--                android:textColor="@color/purple_700"-->
+<!--                android:padding="8dp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_bottom_sheet_product_total"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/TextViewBold"-->
+<!--                android:gravity="end"-->
+<!--                android:textSize="14sp"-->
+<!--                android:text="Rs 6000"-->
+<!--                android:textColor="@color/purple_700"-->
+<!--                android:padding="8dp"/>-->
+<!--        </LinearLayout>-->
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewBold"
+            android:textSize="14sp"
+            android:text="Select Product : "
+            android:textColor="@color/color_dark_grey"
+            android:padding="8dp"/>
+
+        <Spinner
+            android:id="@+id/spinner_bottom_sheet_product_title"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="5"
+            android:prompt="@string/select_product" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tv_dialog_product_price"
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/item_value_text_color"
+                android:textSize="@dimen/cart_item_price_textSize"
+                android:textStyle="bold"
+                tools:text="Rs100" />
+
+            <TextView
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/item_value_text_color"
+                android:textSize="@dimen/cart_item_price_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_dialog_product_uom"
+                style="@style/TextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/item_value_text_color"
+                android:textSize="@dimen/cart_item_price_textSize"
+                android:textStyle="bold"
+                tools:text="kg" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_bottom_sheet_product_quantity"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="5"
+            android:hint="@string/et_hint_enter_quantity"
+            android:textColorHint="@color/color_secondary_text">
+
+            <EditText
+                android:id="@+id/et_bottom_sheet_product_quantity"
+                style="@style/TextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:padding="16dp"
+                android:textColor="@color/color_primary_text"
+                android:textSize="14sp"
+                tools:text="99" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_bottom_sheet_product_gst"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="5"
+            android:hint="@string/et_hint_enter_gst"
+            android:textColorHint="@color/color_secondary_text">
+
+            <EditText
+                android:id="@+id/et_bottom_sheet_product_gst"
+                style="@style/TextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:padding="16dp"
+                android:textColor="@color/color_primary_text"
+                android:textSize="14sp"
+                tools:text="5" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/cb_bottom_sheet_apply_gst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            style="@style/TextViewRegular"
+            android:textSize="14sp"
+            android:text="Apply GST"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btn_bottom_sheet_cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Cancel"
+                android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/btn_bottom_sheet_add"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:focusable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

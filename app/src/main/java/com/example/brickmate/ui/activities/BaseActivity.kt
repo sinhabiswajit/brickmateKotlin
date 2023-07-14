@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.brickmate.R
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -30,28 +32,48 @@ open class BaseActivity : AppCompatActivity() {
 //        snackBar.show()
 //    }
 
-    fun showProgressDialog(text: String){
-        mProgressDialog = Dialog(this)
-        mProgressDialog.setContentView(R.layout.dialog_progress)
-        mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text = text
-        mProgressDialog.setCancelable(false)
-        mProgressDialog.setCanceledOnTouchOutside(false)
-        mProgressDialog.show()
-    }
-    fun hideProgressDialog(){
-        mProgressDialog.dismiss()
+    fun generateOrderId(): String {
+        val date = SimpleDateFormat("ddMMyyyy", Locale.getDefault()).format(Date())
+        val time = SimpleDateFormat("HHmmss", Locale.getDefault()).format(Date())
+        return "ORDER-$date-$time"
     }
 
-    fun doubleBackToExit(){
-        if (doubleBackToExitPressedOnce){
+    fun generateOrderDate(): String {
+        val date = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+        val time = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+        return "$date - $time"
+    }
+
+    fun showProgressDialog(text: String) {
+        if (!::mProgressDialog.isInitialized || !mProgressDialog.isShowing) {
+            mProgressDialog = Dialog(this)
+            mProgressDialog.setContentView(R.layout.dialog_progress)
+            mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text = text
+            mProgressDialog.setCancelable(false)
+            mProgressDialog.setCanceledOnTouchOutside(false)
+            mProgressDialog.show()
+        }
+    }
+
+    fun hideProgressDialog() {
+        if (::mProgressDialog.isInitialized && mProgressDialog.isShowing) {
+            mProgressDialog.dismiss()
+        }
+    }
+
+    fun doubleBackToExit() {
+        if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
         }
         this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, resources.getString(R.string.please_click_back_again_to_exit), Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            this,
+            resources.getString(R.string.please_click_back_again_to_exit),
+            Toast.LENGTH_LONG
+        ).show()
         @Suppress("DEPRECATION")
-        Handler(Looper.getMainLooper()).postDelayed({doubleBackToExitPressedOnce = false}, 2000)
+        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
-
 
 }

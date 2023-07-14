@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_light_purple_500"
+        android:text="ADD PAYMENT"
+        style="@style/TextViewBold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewBold"
+            android:textSize="14sp"
+            android:text="Enter Amount (Rs) : "
+            android:textColor="@color/color_dark_grey"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/et_bottom_sheet_payment_enter_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Eg: 1000, 2600"
+            style="@style/TextViewRegular"
+            android:textSize="14sp"
+            android:minHeight="35dp"
+            android:padding="8dp"
+            android:inputType="number"
+            android:background="@drawable/item_border_background_grey"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewBold"
+            android:textSize="14sp"
+            android:text="Enter Remarks : "
+            android:textColor="@color/color_dark_grey"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/et_bottom_sheet_payment_enter_remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViewRegular"
+            android:textSize="14sp"
+            android:minHeight="35dp"
+            android:inputType="text"
+            android:padding="8dp"
+            android:hint="Eg : Cash, Online"
+            android:background="@drawable/item_border_background_grey"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewBold"
+                android:textSize="14sp"
+                android:text="Select Payment Date : "
+                android:textColor="@color/color_dark_grey"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_bottom_sheet_payment_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:gravity="center"
+                android:background="@drawable/item_border_background_grey"
+                style="@style/TextViewBold"
+                android:textSize="14sp"
+                tools:text="24-05-2023"
+                android:textColor="@color/color_dark_grey"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btn_bottom_sheet_payment_cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Cancel"
+                android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/btn_bottom_sheet_payment_add"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:focusable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

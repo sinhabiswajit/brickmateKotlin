@@ -1,71 +1,65 @@
 package com.example.brickmate.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import com.example.brickmate.R
+import com.example.brickmate.databinding.ActivityAddCustomerBinding
 import com.example.brickmate.firestore.FireStoreClass
+import com.example.brickmate.model.Address
 import com.example.brickmate.model.Customer
+import java.util.*
 
 class AddCustomerActivity : BaseActivity() {
 
-    private var toolBarAddNewCustomerActivity: Toolbar? = null
-    private var btnAddNewCustomer: Button? = null
-    private var firstName: EditText? = null
-    private var lastName: EditText? = null
-    private var phone: EditText? = null
-    private var email: EditText? = null
+    private var binding: ActivityAddCustomerBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_customer)
-        initializeVars()
+        binding = ActivityAddCustomerBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         setUpActionBar()
-        btnAddNewCustomer?.setOnClickListener {
+
+        binding?.btnAddNewCustomer?.setOnClickListener {
             saveCustomerToFireStore()
         }
     }
 
 
     private fun saveCustomerToFireStore() {
-        val name = firstName?.text.toString().trim { it <= ' ' } + " " + lastName?.text.toString().trim { it <= ' ' }
-        val phone = phone?.text.toString().trim { it <= ' ' }
-        val email = email?.text.toString().trim { it <= ' ' }
-        if (validateData()){
+        val name = binding?.etCustomerFirstname?.text.toString().trim { it <= ' ' }.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() } + " " +
+                binding?.etCustomerLastname?.text.toString().trim { it <= ' ' }.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+        val phone = binding?.etCustomerPhone?.text.toString().trim { it <= ' ' }
+        val email = binding?.etCustomerEmail?.text.toString().trim { it <= ' ' }
+        val gstin = binding?.etCustomerGstin?.text.toString().trim { it <= ' ' }
+        val address = binding?.etCustomerAddress?.text.toString().trim { it <= ' ' }
+        val zipcode = binding?.etCustomerZipcode?.text.toString().trim { it <= ' ' }
+        val landmark = binding?.etCustomerLandmark?.text.toString().trim { it <= ' ' }
+        val siteContact = binding?.etCustomerSitePersonContact?.text.toString().trim { it <= ' ' }
+
+        if (validateData()) {
             showProgressDialog(resources.getString(R.string.please_wait))
-            val customerModel = Customer("", name, phone, email)
+            val customerModel = Customer(FireStoreClass().getCurrentUserID(),"", name, phone, email, gstin, arrayListOf(Address(address,zipcode, landmark)), siteContact)
             FireStoreClass().addCustomer(this@AddCustomerActivity, customerModel)
         }
     }
 
-    private fun initializeVars() {
-        toolBarAddNewCustomerActivity = findViewById(R.id.toolbar_add_customer_activity)
-        btnAddNewCustomer = findViewById(R.id.btn_add_new_customer)
-        firstName = findViewById(R.id.et_customer_firstname)
-        lastName = findViewById(R.id.et_customer_lastname)
-        phone = findViewById(R.id.et_customer_phone)
-        email = findViewById(R.id.et_customer_email)
-    }
-
     private fun setUpActionBar() {
-        setSupportActionBar(toolBarAddNewCustomerActivity)
+        val toolbar = binding?.toolbarAddCustomerActivity
+        setSupportActionBar(toolbar)
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_vector_back_arrow_dark)
         }
-        toolBarAddNewCustomerActivity?.setNavigationOnClickListener {
+        toolbar?.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
     }
 
     private fun validateData(): Boolean {
         return when {
-            TextUtils.isEmpty(firstName?.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(binding?.etCustomerFirstname?.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this@AddCustomerActivity,
                     resources.getString(R.string.err_msg_enter_first_name),
@@ -73,7 +67,7 @@ class AddCustomerActivity : BaseActivity() {
                 ).show()
                 false
             }
-            TextUtils.isEmpty(lastName?.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(binding?.etCustomerLastname?.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this@AddCustomerActivity,
                     resources.getString(R.string.err_msg_enter_last_name),
@@ -81,7 +75,7 @@ class AddCustomerActivity : BaseActivity() {
                 ).show()
                 false
             }
-            TextUtils.isEmpty(phone?.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(binding?.etCustomerPhone?.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this@AddCustomerActivity,
                     resources.getString(R.string.err_msg_enter_phone),
@@ -89,10 +83,26 @@ class AddCustomerActivity : BaseActivity() {
                 ).show()
                 false
             }
-            TextUtils.isEmpty(email?.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(binding?.etCustomerAddress?.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this@AddCustomerActivity,
-                    resources.getString(R.string.err_msg_enter_email),
+                    resources.getString(R.string.err_msg_enter_address),
+                    Toast.LENGTH_SHORT
+                ).show()
+                false
+            }
+            TextUtils.isEmpty(binding?.etCustomerZipcode?.text.toString().trim { it <= ' ' }) -> {
+                Toast.makeText(
+                    this@AddCustomerActivity,
+                    resources.getString(R.string.err_msg_enter_zipcode),
+                    Toast.LENGTH_SHORT
+                ).show()
+                false
+            }
+            TextUtils.isEmpty(binding?.etCustomerLandmark?.text.toString().trim { it <= ' ' }) -> {
+                Toast.makeText(
+                    this@AddCustomerActivity,
+                    resources.getString(R.string.err_msg_enter_landmark),
                     Toast.LENGTH_SHORT
                 ).show()
                 false
@@ -106,7 +116,12 @@ class AddCustomerActivity : BaseActivity() {
 
     fun successAddCustomerListFromFireStore() {
         hideProgressDialog()
-        Toast.makeText(this,"Customer added successfully", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Customer added successfully", Toast.LENGTH_SHORT).show()
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }
