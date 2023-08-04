@@ -18,7 +18,6 @@ class EnquiryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEnquiryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setUpActionBar()
 
         adapter = EnquiryFragmentAdapter(supportFragmentManager, lifecycle)

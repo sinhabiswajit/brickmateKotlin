@@ -114,6 +114,7 @@
             android:padding="16dp"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_add_company_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
@@ -121,6 +122,132 @@
                 android:textColor="@color/color_dark_green"
                 android:background="@color/color_light_green"
                 style="@style/TextViewRegular"/>
+            <LinearLayout
+                android:id="@+id/ll_company_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_company_logo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/iv_company_logo_here"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    app:riv_corner_radius="16dp"
+                    app:riv_border_color="@color/color_light_green"
+                    app:riv_border_width="4dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/image"/>
+                <TextView
+                    android:id="@+id/tv_company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="L and T Infotech Pvt. Ltd"
+                    style="@style/TextViewBold"
+                    android:textColor="@color/color_dark_grey"
+                    android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_light_grey"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Address"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/tv_company_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Address"
+                        style="@style/TextViewRegular"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="City"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/tv_company_city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Address"
+                        style="@style/TextViewRegular"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="State"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/tv_company_state"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Address"
+                        style="@style/TextViewRegular"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Pin code"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/tv_company_pin_code"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Address"
+                        style="@style/TextViewRegular"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_add_company_details"
                 android:layout_width="wrap_content"

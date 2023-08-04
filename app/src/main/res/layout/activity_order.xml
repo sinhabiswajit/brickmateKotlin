@@ -239,14 +239,17 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical" />
 
-                <Button
+                <TextView
                     android:id="@+id/btn_order_add_products"
-                    style="@style/TextViewRegular"
+                    style="@style/TextViewBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_margin="5dp"
+                    android:background="@drawable/secondary_item_background"
                     android:text="Add products"
+                    android:padding="8dp"
+                    android:textColor="@color/color_off_white"
                     android:textAllCaps="false" />
 
                 <com.google.android.material.divider.MaterialDivider
@@ -359,7 +362,7 @@
 
         <Button
             android:id="@+id/btn_order_checkout"
-            style="@style/TextViewRegular"
+            style="@style/TextViewBold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

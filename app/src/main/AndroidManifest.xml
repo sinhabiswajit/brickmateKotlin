@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -35,9 +39,9 @@
         <activity
             android:name=".ui.activities.OrderDetailsUpdateActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.activities.OrderByCustomer"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ui.activities.OrderByCustomer"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ui.activities.EnquiryActivity"
             android:exported="false" />

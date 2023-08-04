@@ -1,9 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_light_grey"
     tools:context=".ui.activities.AddCompanyActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_add_company_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/purple_700">
+
+            <TextView
+                android:id="@+id/tv_title_company_profile"
+                style="@style/TextViewBold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start|center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:text="@string/add_company_detail"
+                android:textAllCaps="false"
+                android:textColor="@color/color_off_white"
+                android:textSize="@dimen/toolbar_title_text_size" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/divider_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="@color/purple_700"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_add_company_logo_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    android:background="@color/white"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/divider_view"
+                    app:layout_constraintBottom_toBottomOf="@id/divider_view">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <FrameLayout
+                            android:id="@+id/fl_company_logo"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_gravity="center">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_company_logo"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/iv_company_logo_here"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:scaleType="fitCenter"
+                                app:riv_corner_radius="16dp"
+                                app:riv_border_color="@color/color_light_green"
+                                app:riv_border_width="4dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/image"/>
+
+                            <ImageView
+                                android:id="@+id/iv_company_logo_edit_icon"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="top|end"
+                                android:layout_margin="4dp"
+                                android:src="@drawable/ic_vector_add_photo"/>
+                        </FrameLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Add your Company name here"
+                            style="@style/TextViewBold"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/item_border_background_grey"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_marginTop="4dp"
+                            android:minHeight="40dp"
+                            android:inputType="text"
+                            style="@style/TextViewRegular"
+                            android:gravity="center"/>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_add_company_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Address"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <EditText
+                        android:id="@+id/et_company_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/item_border_background_grey"
+                        android:layout_marginTop="4dp"
+                        android:padding="5dp"
+                        android:minHeight="40dp"
+                        android:inputType="text"
+                        style="@style/TextViewRegular"
+                        android:gravity="start|center_vertical"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="16dp"
+                        android:text="City"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <EditText
+                        android:id="@+id/et_company_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/item_border_background_grey"
+                        android:layout_marginTop="4dp"
+                        android:padding="5dp"
+                        android:minHeight="40dp"
+                        android:inputType="text"
+                        style="@style/TextViewRegular"
+                        android:gravity="start|center_vertical"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="16dp"
+                        android:text="State"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <EditText
+                        android:id="@+id/et_company_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/item_border_background_grey"
+                        android:layout_marginTop="4dp"
+                        android:padding="5dp"
+                        android:minHeight="40dp"
+                        android:inputType="text"
+                        style="@style/TextViewRegular"
+                        android:gravity="start|center_vertical"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Pincode"
+                        style="@style/TextViewBold"
+                        android:textSize="14sp"/>
+                    <EditText
+                        android:id="@+id/et_company_pin_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/item_border_background_grey"
+                        android:layout_marginTop="4dp"
+                        android:padding="5dp"
+                        android:minHeight="40dp"
+                        android:inputType="number"
+                        style="@style/TextViewRegular"
+                        android:gravity="start|center_vertical"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_or_separator"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;  Or  -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"-->
+<!--                android:textStyle="italic"-->
+<!--                android:padding="5dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="16dp"/>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/card_locate_via_google_maps"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="16dp"-->
+<!--                app:cardElevation="4dp"-->
+<!--                app:cardCornerRadius="16dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="16dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:padding="8dp"-->
+<!--                            android:text="Use Google Maps to get your company location"-->
+<!--                            android:background="@color/color_light_green"-->
+<!--                            android:textColor="@color/color_dark_green"-->
+<!--                            style="@style/TextViewRegular"-->
+<!--                            android:textSize="14sp"/>-->
+<!--                        <Button-->
+<!--                            android:id="@+id/btn_locate_company_via_google"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            style="@style/ButtonBold"-->
+<!--                            android:drawableLeft="@drawable/ic_vector_company_light"-->
+<!--                            android:backgroundTint="@color/color_dark_green"-->
+<!--                            android:textColor="@color/color_off_white"-->
+<!--                            android:text="Locate via google"/>-->
+<!--                </LinearLayout>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+            <Button
+                android:id="@+id/btn_add_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Company"
+                style="@style/ButtonBold"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:layout_margin="16dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

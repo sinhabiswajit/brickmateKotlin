@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -56,6 +57,7 @@ class DashboardActivity : BaseActivity(), OnClickListener {
         clOrderList?.setOnClickListener(this)
         clPayments?.setOnClickListener(this)
         clEnquiry?.setOnClickListener(this)
+        binding?.tvFooter?.setOnClickListener(this)
 
     }
 
@@ -199,6 +201,11 @@ class DashboardActivity : BaseActivity(), OnClickListener {
             }
             R.id.cl_enquiry -> {
                 val intent = Intent(this@DashboardActivity, EnquiryActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.tv_footer ->  {
+                val companyWebsiteUrl = "http://indigiconsulting.com/"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(companyWebsiteUrl))
                 startActivity(intent)
             }
         }

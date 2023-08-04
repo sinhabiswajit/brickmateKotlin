@@ -17,6 +17,7 @@ import com.example.brickmate.model.Enquiry
 import com.example.brickmate.model.Product
 import com.example.brickmate.ui.adapters.ProductCheckboxAdapter
 import com.example.brickmate.ui.adapters.ProductEnquiryAdapter
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlin.collections.ArrayList
 
 class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickListener {
@@ -41,7 +42,7 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvAddProduct.setOnClickListener {
-            //showAddProductDialog()
+            showAddProductBottomSheet()
         }
 
         binding.btnSubmitEnquiry.setOnClickListener {
@@ -61,7 +62,132 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
         }
     }
 
+    private fun showAddProductBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        val bottomSheetView =
+            LayoutInflater.from(context).inflate(R.layout.layout_bottom_sheet_add_product, null)
+        bottomSheetDialog.setContentView(bottomSheetView)
 
+        // initialize views
+        val spinner = bottomSheetView.findViewById<Spinner>(R.id.spinner_bottom_sheet_product_title)
+        val etQuantity =
+            bottomSheetView.findViewById<EditText>(R.id.et_bottom_sheet_product_quantity)
+        val etGST = bottomSheetView.findViewById<EditText>(R.id.et_bottom_sheet_product_gst)
+        val tvPrice = bottomSheetView.findViewById<TextView>(R.id.tv_dialog_product_price)
+        val tvUnit = bottomSheetView.findViewById<TextView>(R.id.tv_dialog_product_uom)
+        val checkboxGst = bottomSheetView.findViewById<CheckBox>(R.id.cb_bottom_sheet_apply_gst)
+
+        // set up the spinner with the list of products
+        val adapter = ArrayAdapter<String>(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            productsList.map { it.name }
+        )
+        spinner.adapter = adapter
+
+        // set up the spinner onItemSelected listener to update the price and unit
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedProduct = productsList[position]
+                tvPrice.text = "Rs ${selectedProduct.sell_price}"
+                tvUnit.text = selectedProduct.uom
+                etGST.setText(selectedProduct.gst_rate)
+                // Update the product total when the spinner selection changes
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+        // Get positive button view
+        val positiveButton = bottomSheetView.findViewById<Button>(R.id.btn_bottom_sheet_add)
+        val cancelButton = bottomSheetView.findViewById<Button>(R.id.btn_bottom_sheet_cancel)
+
+        // Disable the positive button initially
+        positiveButton.isEnabled = false
+
+        // Add a TextChangedListener to the quantity EditText
+        etQuantity.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val quantity = s.toString().toIntOrNull()
+                val gst = etGST.text.toString().toIntOrNull()
+
+                // Enable the positive button if both quantity and gst are greater than 0
+                positiveButton.isEnabled =
+                    (quantity != null && quantity > 0 && gst != null && gst > 0)
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        // Add a TextChangedListener to the quantity EditText
+        etGST.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val quantity = etQuantity.text.toString().toIntOrNull()
+                val gst = s.toString().toIntOrNull()
+
+                // Enable the positive button if both quantity and gst are greater than 0
+                positiveButton.isEnabled =
+                    (quantity != null && quantity > 0 && gst != null && gst > 0)
+                // Update the product total when the checkbox state changes
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        // Add a listener to the "Apply GST" checkbox
+        checkboxGst.setOnCheckedChangeListener { _, _ ->
+            val quantity = etQuantity.text.toString().toIntOrNull()
+            val gst = etGST.text.toString().toIntOrNull()
+
+        }
+        // Set the positive button's OnClickListener to add the product to the list
+        positiveButton.setOnClickListener {
+            val selectedPosition = spinner.selectedItemPosition
+            val selectedProduct = getCurrentSelectedProduct(selectedPosition)
+            val quantity = etQuantity.text.toString().toInt()
+            val gstIncluded = checkboxGst.isChecked
+            val gst = if (gstIncluded) {
+                etGST.text.toString()
+            } else {
+                ""
+            }
+
+            val defaultProduct = Product(FireStoreClass().getCurrentUserID(),"", "", "", "", "", "", "", 0, false, false)
+
+            val newProductItem = Product(
+                FireStoreClass().getCurrentUserID(),
+                selectedProduct.product_id,
+                selectedProduct.name,
+                selectedProduct.description,
+                selectedProduct.uom,
+                selectedProduct.sell_price,
+                gst,
+                selectedProduct.product_image,
+                quantity,
+                isSelected = false,
+                gstIncluded = gstIncluded
+            )
+
+            productItemList.add(newProductItem)
+            updateProductRecView()
+            calculateTotalAndUpdateUI()
+
+            bottomSheetDialog.dismiss()
+        }
+        cancelButton.setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.show()
+    }
 
     private fun updateProductRecView() {
         if (productItemList.size > 0){
@@ -140,6 +266,22 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
             binding.clProductsTotal.visibility = View.GONE
         }
         binding.tvProductTotal.text = "Rs $total"
+    }
+
+    private fun getCurrentSelectedProduct(position: Int): Product {
+        return productsList.getOrNull(position) ?: Product(
+            FireStoreClass().getCurrentUserID(),
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            0,
+            false,
+            false
+        )
     }
 
 }

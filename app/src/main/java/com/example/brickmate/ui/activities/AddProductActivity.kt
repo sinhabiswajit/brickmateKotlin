@@ -115,16 +115,15 @@ class AddProductActivity : BaseActivity(), OnClickListener {
                     )
                 }
             }
+
             R.id.btn_add_product -> {
                 if (validateProductDetails()) {
-                    if (mSelectedImageFileURI!=null){
+                    if (mSelectedImageFileURI != null) {
                         uploadProductImage()
-                    }else{
+                    } else {
                         updateProductDetailsToCloud()
                     }
-
                 }
-
             }
         }
     }
@@ -195,9 +194,9 @@ class AddProductActivity : BaseActivity(), OnClickListener {
         hideProgressDialog()
         //showErrorSnackBar("Product image is uploaded successfully. Image URL : $imageURL", false)
         mProductImageURL = imageURL
-        if (product!=null){
+        if (product != null) {
             updateProductDetailsToCloud()
-        }else{
+        } else {
             uploadProductDetailsToCloud()
         }
 
@@ -216,7 +215,7 @@ class AddProductActivity : BaseActivity(), OnClickListener {
             "sell_price" to etProductSellPrice?.text.toString().trim { it <= ' ' },
             "gst_rate" to etProductGstRate?.text.toString().trim { it <= ' ' },
             "product_image" to imageurl
-            )
+        )
         showProgressDialog(resources.getString(R.string.please_wait))
         FireStoreClass().updateProduct(this, productId, updatedProduct)
     }
@@ -248,22 +247,26 @@ class AddProductActivity : BaseActivity(), OnClickListener {
                 return false
             }
             if (etProductDescription!!.text.isEmpty()) {
-                etProductDescription?.error = resources.getString(R.string.err_msg_enter_product_description)
+                etProductDescription?.error =
+                    resources.getString(R.string.err_msg_enter_product_description)
                 etProductDescription?.requestFocus()
                 return false
             }
             if (etProductSellPrice!!.text.isEmpty()) {
-                etProductSellPrice?.error = resources.getString(R.string.err_msg_enter_product_price)
+                etProductSellPrice?.error =
+                    resources.getString(R.string.err_msg_enter_product_price)
                 etProductSellPrice?.requestFocus()
                 return false
             }
             if (etProductUnitOfMeasurement!!.text.isEmpty()) {
-                etProductUnitOfMeasurement?.error = resources.getString(R.string.err_msg_enter_product_uom)
+                etProductUnitOfMeasurement?.error =
+                    resources.getString(R.string.err_msg_enter_product_uom)
                 etProductUnitOfMeasurement?.requestFocus()
                 return false
             }
             if (etProductGstRate!!.text.isEmpty()) {
-                etProductGstRate?.error = resources.getString(R.string.err_msg_enter_product_gst_rate)
+                etProductGstRate?.error =
+                    resources.getString(R.string.err_msg_enter_product_gst_rate)
                 etProductGstRate?.requestFocus()
                 return false
             }
@@ -284,22 +287,26 @@ class AddProductActivity : BaseActivity(), OnClickListener {
                 return false
             }
             if (etProductDescription!!.text.isEmpty()) {
-                etProductDescription?.error = resources.getString(R.string.err_msg_enter_product_description)
+                etProductDescription?.error =
+                    resources.getString(R.string.err_msg_enter_product_description)
                 etProductDescription?.requestFocus()
                 return false
             }
             if (etProductSellPrice!!.text.isEmpty()) {
-                etProductSellPrice?.error = resources.getString(R.string.err_msg_enter_product_price)
+                etProductSellPrice?.error =
+                    resources.getString(R.string.err_msg_enter_product_price)
                 etProductSellPrice?.requestFocus()
                 return false
             }
             if (etProductUnitOfMeasurement!!.text.isEmpty()) {
-                etProductUnitOfMeasurement?.error = resources.getString(R.string.err_msg_enter_product_uom)
+                etProductUnitOfMeasurement?.error =
+                    resources.getString(R.string.err_msg_enter_product_uom)
                 etProductUnitOfMeasurement?.requestFocus()
                 return false
             }
             if (etProductGstRate!!.text.isEmpty()) {
-                etProductGstRate?.error = resources.getString(R.string.err_msg_enter_product_gst_rate)
+                etProductGstRate?.error =
+                    resources.getString(R.string.err_msg_enter_product_gst_rate)
                 etProductGstRate?.requestFocus()
                 return false
             }

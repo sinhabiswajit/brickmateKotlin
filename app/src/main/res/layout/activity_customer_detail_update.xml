@@ -52,10 +52,13 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/iv_customer_image"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    app:riv_corner_radius="70dp"
+                    app:riv_border_color="@color/color_light_green"
+                    app:riv_border_width="4dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/circular_image"
                     android:scaleType="centerCrop"
@@ -189,7 +192,7 @@
                         android:layout_margin="4dp"
                         android:textColor="@color/white"
                         style="@style/TextViewBold"
-                        android:background="@drawable/item_small_semi_curved_button"
+                        android:background="@drawable/secondary_item_background"
                         android:text="Add Address"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -305,7 +308,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/item_rounded_button_stroke"
                     android:drawableTint="@android:color/white"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"

@@ -26,6 +26,7 @@ object Constants {
     const val USER_ID: String = "user_id"
     const val CUSTOMERS: String = "customers"
     const val PRODUCTS : String = "products"
+    const val COMPANY : String = "company"
     const val EXTRA_PRODUCT_ID: String = "extra_product_id"
 
     const val BRICKMATE_PREFERENCES: String = "BrickMatePrefs"
@@ -38,6 +39,7 @@ object Constants {
     const val RC_SIGN_IN : Int = 5
 
     const val PRODUCT_IMAGE : String = "Product_image"
+    const val COMPANY_LOGO : String = "Company_logo"
 
     fun showImageChooser(activity: Activity){
         val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)

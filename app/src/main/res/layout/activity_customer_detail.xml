@@ -52,10 +52,13 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/iv_customer_image"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    app:riv_corner_radius="70dp"
+                    app:riv_border_width="4dp"
+                    app:riv_border_color="@color/color_light_green"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/circular_image"
                     android:scaleType="centerCrop"
@@ -253,7 +256,7 @@
                     android:gravity="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:background="@drawable/item_rounded_button_solid"
+                    android:backgroundTint="@android:color/holo_red_light"
                     android:foreground="?attr/selectableItemBackground"/>
                 <Button
                     android:id="@+id/btn_customer_update"
@@ -266,7 +269,6 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:drawableTint="@android:color/white"
-                    android:background="@drawable/item_rounded_button_stroke"
                     android:foreground="?attr/selectableItemBackground"/>
             </LinearLayout>
 

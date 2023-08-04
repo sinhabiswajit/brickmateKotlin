@@ -115,6 +115,7 @@ class FireStoreClass {
                         activity.successGetCustomerListFromFireStore(customerList)
                         Log.e("CustomerList", customerList.toString())
                     }
+
                     is OrderActivity -> {
                         activity.successGetCustomerListFromFireStore(customerList)
                     }
@@ -129,6 +130,7 @@ class FireStoreClass {
                     is CustomerActivity -> {
                         activity.hideProgressDialog()
                     }
+
                     is OrderActivity -> {
                         activity.hideProgressDialog()
                     }
@@ -154,10 +156,20 @@ class FireStoreClass {
                     is AddProductActivity -> {
                         activity.imageUploadSuccess(uri.toString())
                     }
+
+                    is AddCompanyActivity -> {
+                        activity.imageUploadSuccess(uri.toString())
+                    }
+
+
                 }
             }
         }.addOnFailureListener { exception ->
             when (activity) {
+                is AddProductActivity -> {
+                    activity.hideProgressDialog()
+                }
+
                 is AddProductActivity -> {
                     activity.hideProgressDialog()
                 }
@@ -199,6 +211,7 @@ class FireStoreClass {
                     is ProductActivity -> {
                         activity.successGetProductListFromFireStore(productsList)
                     }
+
                     is OrderDetailsUpdateActivity -> {
                         activity.successGetProductListFromFireStore(productsList)
                     }
@@ -325,9 +338,11 @@ class FireStoreClass {
                     is SelectCustomerActivity -> {
                         activity.successAddressForSelectedCustomer(addresses)
                     }
+
                     is OrderActivity -> {
                         activity.successAddressForSelectedCustomer(addresses)
                     }
+
                     is AddressListActivity -> {
                         activity.successGetCustomerAddressListFromFireStore(addresses)
                     }
@@ -912,7 +927,7 @@ class FireStoreClass {
             .get()
             .addOnSuccessListener {
                 val totalOrderCount = it.size()
-                when(activity){
+                when (activity) {
                     is DashboardActivity -> {
                         activity.successTotalOrderCount(totalOrderCount)
                     }
@@ -930,7 +945,7 @@ class FireStoreClass {
             .get()
             .addOnSuccessListener {
                 val totalUnpaidOrderCount = it.size()
-                when(activity){
+                when (activity) {
                     is DashboardActivity -> {
                         activity.successTotalUnpaidOrderCount(totalUnpaidOrderCount)
                     }
@@ -948,7 +963,7 @@ class FireStoreClass {
             .get()
             .addOnSuccessListener {
                 val totalUndeliveredOrderCount = it.size()
-                when(activity){
+                when (activity) {
                     is DashboardActivity -> {
                         activity.successTotalUndeliveredOrderCount(totalUndeliveredOrderCount)
                     }
@@ -956,6 +971,87 @@ class FireStoreClass {
             }
             .addOnFailureListener {
                 println("Failed to fetch total undeliverd order count: $it")
+            }
+    }
+
+    fun uploadCompanyDetails(activity: AddCompanyActivity, company: Company) {
+        mFireStore.collection(Constants.COMPANY)
+            .document()
+            .set(company, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.companyUploadSuccessToCloud()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading company details", e
+                )
+            }
+    }
+
+    fun getCompanyDetailsFromFireStore(activity: Activity) {
+        mFireStore.collection(Constants.COMPANY)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Company", document.documents.toString())
+                var company = Company()
+                if (!document.isEmpty) {
+                    company = document.documents[0].toObject(Company::class.java)!!
+                }
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.successGetCompanyDetailsFromFireStore(company)
+                    }
+                }
+
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while getting products", e
+                )
+            }
+    }
+
+    fun updateCompany(
+        activity: Activity,
+        updatedCompany: java.util.HashMap<String, String>
+    ) {
+        mFireStore.collection(Constants.COMPANY)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val documentSnapshot = documents.documents[0]
+                    documentSnapshot.reference.update(updatedCompany as Map<String, Any>)
+                        .addOnSuccessListener {
+                            if (activity is AddCompanyActivity) {
+                                activity.companyUpdateSuccess()
+                            }
+                        }
+                        .addOnFailureListener { e ->
+                            if (activity is AddCompanyActivity) {
+                                activity.hideProgressDialog()
+                            }
+                            Log.e(activity.javaClass.simpleName, "Error updating company", e)
+                        }
+                }
+            }
+            .addOnFailureListener { e ->
+                when(activity) {
+                    is AddCompanyActivity -> {
+                        activity.hideProgressDialog()
+                        Log.e(activity.javaClass.simpleName, "Error fetching company", e)
+                    }
+                }
             }
     }
 }

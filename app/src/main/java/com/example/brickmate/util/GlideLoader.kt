@@ -35,5 +35,18 @@ class GlideLoader(val context: Context)  {
             e.printStackTrace()
         }
     }
+    fun loadCompanyLogo(image: Any, imageView: ImageView){
+        try {
+            // Load the user image in the ImageView
+            Glide
+                .with(context)
+                .load(image)
+                .centerCrop()
+                .placeholder(R.drawable.ic_product_placeholder)
+                .into(imageView)
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+    }
 
 }

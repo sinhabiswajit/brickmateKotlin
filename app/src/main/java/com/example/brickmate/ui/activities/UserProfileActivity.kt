@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -12,18 +14,21 @@ import com.bumptech.glide.Glide
 import com.example.brickmate.R
 import com.example.brickmate.databinding.ActivityDashboardBinding
 import com.example.brickmate.databinding.ActivityUserProfileBinding
+import com.example.brickmate.firestore.FireStoreClass
+import com.example.brickmate.model.Company
 import com.example.brickmate.model.User
 import com.example.brickmate.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
-class UserProfileActivity : AppCompatActivity() {
+class UserProfileActivity : BaseActivity() {
 
     private var binding: ActivityUserProfileBinding? = null
     private lateinit var sharedPreferences: SharedPreferences
     private var toolBarUserProfileActivity: androidx.appcompat.widget.Toolbar? = null
     private var user: User? = null
+    private var company: Company? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +44,21 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
         binding?.btnAddCompanyDetails?.setOnClickListener {
-
+            val intent = Intent(this, AddCompanyActivity::class.java)
+            intent.putExtra("company", company)
+            startActivity(intent)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getUserCompanyDetails()
+    }
+
+    private fun getUserCompanyDetails() {
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FireStoreClass().getCompanyDetailsFromFireStore(this@UserProfileActivity)
     }
 
     private fun getUserSignInInformation() {
@@ -103,6 +120,7 @@ class UserProfileActivity : AppCompatActivity() {
     private fun initializeVars() {
         toolBarUserProfileActivity = binding?.toolbarUserProfileActivity
     }
+
     private fun setUpActionBar() {
         setSupportActionBar(toolBarUserProfileActivity)
         val actionBar = supportActionBar
@@ -113,6 +131,31 @@ class UserProfileActivity : AppCompatActivity() {
         }
         toolBarUserProfileActivity?.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    fun successGetCompanyDetailsFromFireStore(company: Company) {
+        hideProgressDialog()
+        Log.e("COMPANY", company.toString())
+        this.company = company
+        if (this.company!!.added) {
+            binding?.tvAddCompanyInfo?.visibility = View.GONE
+            binding?.llCompanyAddress?.visibility = View.VISIBLE
+            binding?.ivCompanyLogo?.let {
+                Glide.with(this)
+                    .load(company.companyLogo)
+                    .placeholder(R.drawable.iv_company_logo_here)
+                    .into(it)
+            }
+            binding?.tvCompanyName?.text = company.companyName
+            binding?.tvCompanyAddress?.text = company.address
+            binding?.tvCompanyCity?.text = company.city
+            binding?.tvCompanyState?.text = company.state
+            binding?.tvCompanyPinCode?.text = company.pinCode
+            binding?.btnAddCompanyDetails?.text = "Update Company Details"
+        } else {
+            binding?.tvAddCompanyInfo?.visibility = View.VISIBLE
+            binding?.llCompanyAddress?.visibility = View.GONE
         }
     }
 }

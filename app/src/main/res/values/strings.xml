@@ -123,6 +123,16 @@
     <string name="err_msg_enter_valid_email">Please enter valid email address.</string>
     <string name="et_hint_enter_gst">Enter GST(%)</string>
     <string name="user_profile">User Profile</string>
+    <string name="add_company_detail">Add Company</string>
+    <!-- Add company page -->
+    <string name="err_msg_select_company_logo">Select a company logo</string>
+    <string name="err_msg_enter_company_name">Please enter your Company Name</string>
+    <string name="err_msg_enter_company_address">Please enter Company Address</string>
+    <string name="err_msg_enter_company_city">Please enter City</string>
+    <string name="err_msg_enter_company_state">Please enter State</string>
+    <string name="err_msg_enter_company_pin_code">Please enter the pin code</string>
+    <string name="success_msg_upload_company">Company information uploaded successfully to Cloud</string>
+
     <string-array name="delivery_status_options">
         <item>Delivered</item>
         <item>Pending</item>
