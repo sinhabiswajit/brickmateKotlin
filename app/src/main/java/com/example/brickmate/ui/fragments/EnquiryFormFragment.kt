@@ -52,12 +52,17 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
             val location = binding.etEnquiryCustomerLocation.text.toString().trim()
             val additionalInfo = binding.etEnquiryAdditionalInfo.text.toString().trim()
             val enquiryDate = generateEnquiryDate()
-            if (name.isNotEmpty() && phone.isNotEmpty() && location.isNotEmpty() && productItemList.size>0){
+            if (name.isNotEmpty() && phone.isNotEmpty() && location.isNotEmpty() && productItemList.size > 0) {
                 showProgressDialog(resources.getString(R.string.please_wait))
-                val enquiry = Enquiry("", enquiryDate, name, phone, location, additionalInfo, productItemList)
+                val enquiry =
+                    Enquiry("", enquiryDate, name, phone, location, additionalInfo, productItemList)
                 FireStoreClass().saveEnquiry(this, enquiry)
-            }else{
-                Toast.makeText(requireContext(), "Please fill in the required details", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Please fill in the required details",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -160,7 +165,19 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
                 ""
             }
 
-            val defaultProduct = Product(FireStoreClass().getCurrentUserID(),"", "", "", "", "", "", "", 0, false, false)
+            val defaultProduct = Product(
+                FireStoreClass().getCurrentUserID(),
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                0,
+                false,
+                false
+            )
 
             val newProductItem = Product(
                 FireStoreClass().getCurrentUserID(),
@@ -175,7 +192,6 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
                 isSelected = false,
                 gstIncluded = gstIncluded
             )
-
             productItemList.add(newProductItem)
             updateProductRecView()
             calculateTotalAndUpdateUI()
@@ -190,14 +206,14 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
     }
 
     private fun updateProductRecView() {
-        if (productItemList.size > 0){
+        if (productItemList.size > 0) {
             binding.clProductsTotal.visibility = View.VISIBLE
             binding.rvSelectedProducts.visibility = View.VISIBLE
             val adapter = ProductEnquiryAdapter(requireContext(), productItemList)
             adapter.setOnDeleteClickListener(this)
             binding.rvSelectedProducts.layoutManager = LinearLayoutManager(context)
             binding.rvSelectedProducts.adapter = adapter
-        }else{
+        } else {
             binding.clProductsTotal.visibility = View.GONE
             binding.rvSelectedProducts.visibility = View.GONE
         }
@@ -259,13 +275,13 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
 
     private fun calculateTotalAndUpdateUI() {
         total = productItemList.sumByDouble { it.sell_price.toDouble() * it.quantity }
-        if (binding.clProductsTotal.visibility != View.VISIBLE){
+        if (binding.clProductsTotal.visibility != View.VISIBLE) {
             binding.clProductsTotal.visibility = View.VISIBLE
         }
-        if (productItemList.size == 0){
+        if (productItemList.size == 0) {
             binding.clProductsTotal.visibility = View.GONE
         }
-        binding.tvProductTotal.text = "Rs $total"
+        binding.tvProductTotal.text = "Rs ${"%.2f".format(total)}"
     }
 
     private fun getCurrentSelectedProduct(position: Int): Product {
@@ -283,5 +299,4 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
             false
         )
     }
-
 }

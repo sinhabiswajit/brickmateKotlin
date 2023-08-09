@@ -50,10 +50,10 @@ class ProductEnquiryAdapter(
         val product = productList[position]
         holder.tvProductName.text = product.name
         holder.tvQuantity.text = product.quantity.toString()
-        holder.tvSellPrice.text = "Rs ${product.sell_price}"
+        holder.tvSellPrice.text = "Rs ${product.sell_price}" // Rs ${"%.2f".format(total)}
         holder.tvUnit.text = product.uom
         val total = product.sell_price.toDouble() * product.quantity
-        holder.tvProductTotal.text = "Rs $total"
+        holder.tvProductTotal.text = "Rs ${"%.2f".format(total)}"
         holder.ivDelete.setOnClickListener {
             onDeleteClickListener?.onDeleteClick(position)
         }
