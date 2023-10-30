@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -16,10 +15,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import com.bumptech.glide.Glide
 import com.example.brickmate.R
-import com.example.brickmate.databinding.ActivityCustomerBinding
 import com.example.brickmate.databinding.ActivityDashboardBinding
 import com.example.brickmate.firestore.FireStoreClass
 import com.example.brickmate.model.User
@@ -200,7 +197,7 @@ class DashboardActivity : BaseActivity(), OnClickListener {
                 startActivity(intent)
             }
             R.id.cl_enquiry -> {
-                val intent = Intent(this@DashboardActivity, EnquiryActivity::class.java)
+                val intent = Intent(this@DashboardActivity, QuotationActivity::class.java)
                 startActivity(intent)
             }
             R.id.tv_footer ->  {

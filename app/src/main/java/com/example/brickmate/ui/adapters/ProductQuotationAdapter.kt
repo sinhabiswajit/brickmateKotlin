@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.brickmate.R
 import com.example.brickmate.model.Product
 
-class ProductEnquiryAdapter(
+class ProductQuotationAdapter(
     private val context: Context,
     private var productList: ArrayList<Product>
-) : RecyclerView.Adapter<ProductEnquiryAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ProductQuotationAdapter.ViewHolder>() {
 
     // Declare interface for delete button click listener
     interface OnDeleteClickListener {
@@ -52,7 +52,15 @@ class ProductEnquiryAdapter(
         holder.tvQuantity.text = product.quantity.toString()
         holder.tvSellPrice.text = "Rs ${product.sell_price}" // Rs ${"%.2f".format(total)}
         holder.tvUnit.text = product.uom
-        val total = product.sell_price.toDouble() * product.quantity
+        val total: Double = if (product.gstIncluded) {
+            val gstRate = product.gst_rate.toDouble()
+            val productPrice = product.sell_price.toDouble()
+            val gstAmount = (gstRate / 100) * productPrice
+            (productPrice + gstAmount) * product.quantity
+        } else {
+            product.sell_price.toDouble() * product.quantity.toDouble() // Total without GST
+        }
+        //val total = product.sell_price.toDouble() * product.quantity
         holder.tvProductTotal.text = "Rs ${"%.2f".format(total)}"
         holder.ivDelete.setOnClickListener {
             onDeleteClickListener?.onDeleteClick(position)

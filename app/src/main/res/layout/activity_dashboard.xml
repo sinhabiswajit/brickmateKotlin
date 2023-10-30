@@ -475,17 +475,17 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/divider_marginTop"
                     android:background="@color/color_light_grey"
-                    app:layout_constraintBottom_toTopOf="@id/tv_enquiry"
+                    app:layout_constraintBottom_toTopOf="@id/tv_quotation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_enquiry" />
 
                 <TextView
-                    android:id="@+id/tv_enquiry"
+                    android:id="@+id/tv_quotation"
                     style="@style/TextViewBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/dashboard_grid_enquiry"
+                    android:text="@string/dashboard_grid_quotation"
                     android:textAlignment="center"
                     android:textColor="@color/color_primary_text"
                     app:layout_constraintBottom_toBottomOf="parent"

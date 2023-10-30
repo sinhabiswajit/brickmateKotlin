@@ -44,6 +44,24 @@ open class BaseActivity : AppCompatActivity() {
         return "$date - $time"
     }
 
+    fun formatValidDate(validDate: String): String {
+        // Create a SimpleDateFormat instance to parse the input date string
+        val inputFormat = SimpleDateFormat("dd-MM-yyyy - HH:mm:ss", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+        try {
+            // Parse the input date string into a Date object
+            val date = inputFormat.parse(validDate)
+
+            // Format the Date object into the desired format
+            return outputFormat.format(date)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return "" // Return an empty string if parsing fails
+    }
+
     fun showProgressDialog(text: String) {
         if (!::mProgressDialog.isInitialized || !mProgressDialog.isShowing) {
             mProgressDialog = Dialog(this)
@@ -74,6 +92,10 @@ open class BaseActivity : AppCompatActivity() {
         ).show()
         @Suppress("DEPRECATION")
         Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+    }
+
+    fun showToast(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
 }

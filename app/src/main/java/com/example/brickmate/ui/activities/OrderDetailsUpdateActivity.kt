@@ -213,7 +213,6 @@ class OrderDetailsUpdateActivity : BaseActivity(),
                 tvUnit.text = selectedProduct.uom
                 etGST.setText(selectedProduct.gst_rate)
                 // Update the product total when the spinner selection changes
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

@@ -6,12 +6,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.brickmate.R
 import com.example.brickmate.databinding.ActivityEnquiryBinding
-import com.example.brickmate.ui.adapters.EnquiryFragmentAdapter
+import com.example.brickmate.ui.adapters.QuotationFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 
-class EnquiryActivity : AppCompatActivity() {
+class QuotationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEnquiryBinding
-    private lateinit var adapter: EnquiryFragmentAdapter
+    private lateinit var adapter: QuotationFragmentAdapter
     private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +20,10 @@ class EnquiryActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpActionBar()
 
-        adapter = EnquiryFragmentAdapter(supportFragmentManager, lifecycle)
+        adapter = QuotationFragmentAdapter(supportFragmentManager, lifecycle)
 
-        binding.tabLayoutEnquiry.addTab(binding.tabLayoutEnquiry.newTab().setText("Enquiry"))
-        binding.tabLayoutEnquiry.addTab(binding.tabLayoutEnquiry.newTab().setText("Old Enquiries"))
+        binding.tabLayoutEnquiry.addTab(binding.tabLayoutEnquiry.newTab().setText("Quotation"))
+        binding.tabLayoutEnquiry.addTab(binding.tabLayoutEnquiry.newTab().setText("Quote List"))
 
         binding.viewPagerEnquiry.adapter = adapter
 

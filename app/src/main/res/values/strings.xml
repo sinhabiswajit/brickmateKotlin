@@ -29,7 +29,7 @@
     <string name="image">image</string>
     <string name="dashboard_grid_customer">Customers</string>
     <string name="dashboard_grid_products">Products</string>
-    <string name="dashboard_grid_enquiry">Enquiry</string>
+    <string name="dashboard_grid_quotation">Quotations</string>
     <string name="dashboard_grid_payments">Payments</string>
     <string name="dashboard_grid_order_list">Order List</string>
     <string name="dashboard_grid_order">Order</string>
@@ -132,6 +132,7 @@
     <string name="err_msg_enter_company_state">Please enter State</string>
     <string name="err_msg_enter_company_pin_code">Please enter the pin code</string>
     <string name="success_msg_upload_company">Company information uploaded successfully to Cloud</string>
+    <string name="view_quotation">View Quotation</string>
 
     <string-array name="delivery_status_options">
         <item>Delivered</item>

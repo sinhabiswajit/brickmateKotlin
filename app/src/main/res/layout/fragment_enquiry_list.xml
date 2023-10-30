@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_light_grey"
-    tools:context=".ui.fragments.EnquiryListFragment">
+    tools:context=".ui.fragments.QuotationListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_enquiry_list"
+            android:id="@+id/rv_quotation_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="gone"
@@ -21,12 +21,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_no_enquiries_found"
+            android:id="@+id/tv_no_quotation_found"
             style="@style/TextViewBold"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="No Enquiries found"
+            android:text="No Quotations found"
             android:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

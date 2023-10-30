@@ -4,10 +4,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.brickmate.ui.fragments.EnquiryFormFragment
-import com.example.brickmate.ui.fragments.EnquiryListFragment
+import com.example.brickmate.ui.fragments.QuotationFormFragment
+import com.example.brickmate.ui.fragments.QuotationListFragment
 
-class EnquiryFragmentAdapter(
+class QuotationFragmentAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle){
@@ -17,9 +17,9 @@ class EnquiryFragmentAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return if (position == 0)
-            EnquiryFormFragment()
+            QuotationFormFragment()
             else
-            EnquiryListFragment()
+            QuotationListFragment()
 
     }
 }

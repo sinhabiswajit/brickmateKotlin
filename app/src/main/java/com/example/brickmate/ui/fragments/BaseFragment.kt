@@ -29,6 +29,16 @@ open class BaseFragment : Fragment() {
         return "$date - $time"
     }
 
+    fun generateQuoteValidDate(): String {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, 7) // Add 7 days to the current date
+
+        val date = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(calendar.time)
+        val time = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(calendar.time)
+
+        return "$date - $time"
+    }
+
     fun showProgressDialog(text: String){
         mProgressDialog = Dialog(requireActivity())
 

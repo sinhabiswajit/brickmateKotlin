@@ -3,7 +3,6 @@ package com.example.brickmate.ui.fragments
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brickmate.R
 import com.example.brickmate.databinding.FragmentEnquiryListBinding
 import com.example.brickmate.firestore.FireStoreClass
-import com.example.brickmate.model.Enquiry
+import com.example.brickmate.model.Quotation
 import com.example.brickmate.model.Product
-import com.example.brickmate.ui.adapters.EnquiryAdapter
+import com.example.brickmate.ui.adapters.QuotationAdapter
 import java.util.ArrayList
 
-class EnquiryListFragment : BaseFragment() {
+class QuotationListFragment : BaseFragment() {
     private var _binding: FragmentEnquiryListBinding? = null
     private val binding get() = _binding!!
 
@@ -47,18 +46,18 @@ class EnquiryListFragment : BaseFragment() {
         _binding = null
     }
 
-    fun successGetEnquiryList(enquiryList: ArrayList<Enquiry>) {
+    fun successGetEnquiryList(quotationList: ArrayList<Quotation>) {
         hideProgressDialog()
-        if (enquiryList.size > 0) {
-            binding.tvNoEnquiriesFound.visibility = View.GONE
-            binding.rvEnquiryList.visibility = View.VISIBLE
-            binding.rvEnquiryList.layoutManager = LinearLayoutManager(context)
-            binding.rvEnquiryList.setHasFixedSize(true)
-            val adapter = EnquiryAdapter(requireContext(), enquiryList, this)
-            binding.rvEnquiryList.adapter = adapter
+        if (quotationList.size > 0) {
+            binding.tvNoQuotationFound.visibility = View.GONE
+            binding.rvQuotationList.visibility = View.VISIBLE
+            binding.rvQuotationList.layoutManager = LinearLayoutManager(context)
+            binding.rvQuotationList.setHasFixedSize(true)
+            val adapter = QuotationAdapter(requireContext(), quotationList, this)
+            binding.rvQuotationList.adapter = adapter
         } else {
-            binding.tvNoEnquiriesFound.visibility = View.VISIBLE
-            binding.rvEnquiryList.visibility = View.GONE
+            binding.tvNoQuotationFound.visibility = View.VISIBLE
+            binding.rvQuotationList.visibility = View.GONE
         }
     }
 

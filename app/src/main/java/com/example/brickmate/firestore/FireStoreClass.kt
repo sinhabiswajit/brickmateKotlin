@@ -6,21 +6,17 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.brickmate.model.*
 import com.example.brickmate.ui.activities.*
 import com.example.brickmate.ui.fragments.*
 import com.example.brickmate.util.Constants
-import com.google.common.reflect.TypeToken
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.gson.Gson
 import java.io.Serializable
 import kotlin.collections.HashMap
 
@@ -367,9 +363,9 @@ class FireStoreClass {
             }
     }
 
-    fun saveEnquiry(fragment: EnquiryFormFragment, enquiry: Enquiry) {
-        mFireStore.collection(Constants.ENQUIRY)
-            .add(enquiry)
+    fun saveEnquiry(fragment: QuotationFormFragment, quotation: Quotation) {
+        mFireStore.collection(Constants.QUOTATION)
+            .add(quotation)
             .addOnSuccessListener {
                 fragment.successSaveEnquiry()
             }
@@ -379,18 +375,18 @@ class FireStoreClass {
             }
     }
 
-    fun getEnquiryList(fragment: EnquiryListFragment) {
-        mFireStore.collection(Constants.ENQUIRY)
+    fun getEnquiryList(fragment: QuotationListFragment) {
+        mFireStore.collection(Constants.QUOTATION)
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Enquiry List", document.documents.toString())
-                val enquiryList = ArrayList<Enquiry>()
+                val quotationList = ArrayList<Quotation>()
                 for (i in document.documents) {
-                    val enquiry = i.toObject(Enquiry::class.java)
-                    enquiry?.enquiry_id = i.id
-                    enquiryList.add(enquiry!!)
+                    val quotation = i.toObject(Quotation::class.java)
+                    quotation?.quotation_id = i.id
+                    quotationList.add(quotation!!)
                 }
-                fragment.successGetEnquiryList(enquiryList)
+                fragment.successGetEnquiryList(quotationList)
             }
             .addOnFailureListener { e ->
                 fragment.hideProgressDialog()
@@ -398,7 +394,7 @@ class FireStoreClass {
             }
     }
 
-    fun getProductListFromFireStore(fragment: EnquiryFormFragment) {
+    fun getProductListFromFireStore(fragment: QuotationFormFragment) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document ->
@@ -421,8 +417,8 @@ class FireStoreClass {
             }
     }
 
-    fun deleteEnquiryFromFireStore(fragment: EnquiryListFragment, enquiryId: String) {
-        mFireStore.collection(Constants.ENQUIRY)
+    fun deleteEnquiryFromFireStore(fragment: QuotationListFragment, enquiryId: String) {
+        mFireStore.collection(Constants.QUOTATION)
             .document(enquiryId)
             .delete()
             .addOnSuccessListener {
@@ -1002,6 +998,9 @@ class FireStoreClass {
                 }
                 when (activity) {
                     is UserProfileActivity -> {
+                        activity.successGetCompanyDetailsFromFireStore(company)
+                    }
+                    is ViewQuotationActivity -> {
                         activity.successGetCompanyDetailsFromFireStore(company)
                     }
                 }

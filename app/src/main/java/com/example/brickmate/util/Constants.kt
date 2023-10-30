@@ -14,7 +14,7 @@ object Constants {
     const val FACEBOOK: String = "facebook"
     const val TWITTER: String = "twitter"
     const val LOGGED_IN_WITH: String = "loggedInWith"
-    const val ENQUIRY: String = "enquiry"
+    const val QUOTATION: String = "quotation"
     const val ORDERS: String = "orders"
     const val CART_ITEMS: String = "cart_items"
     const val DEFAULT_PRODUCT_QUANTITY: String = "1"

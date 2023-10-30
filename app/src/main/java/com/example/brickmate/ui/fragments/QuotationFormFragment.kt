@@ -1,6 +1,5 @@
 package com.example.brickmate.ui.fragments
 
-import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brickmate.R
 import com.example.brickmate.databinding.FragmentEnquiryFormBinding
 import com.example.brickmate.firestore.FireStoreClass
-import com.example.brickmate.model.Enquiry
+import com.example.brickmate.model.Quotation
 import com.example.brickmate.model.Product
 import com.example.brickmate.ui.adapters.ProductCheckboxAdapter
-import com.example.brickmate.ui.adapters.ProductEnquiryAdapter
+import com.example.brickmate.ui.adapters.ProductQuotationAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlin.collections.ArrayList
 
-class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickListener {
+class QuotationFormFragment : BaseFragment(), ProductQuotationAdapter.OnDeleteClickListener {
 
     private var _binding: FragmentEnquiryFormBinding? = null
     private val binding get() = _binding!!
@@ -52,11 +51,12 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
             val location = binding.etEnquiryCustomerLocation.text.toString().trim()
             val additionalInfo = binding.etEnquiryAdditionalInfo.text.toString().trim()
             val enquiryDate = generateEnquiryDate()
+            val quoteValidDate = generateQuoteValidDate()
             if (name.isNotEmpty() && phone.isNotEmpty() && location.isNotEmpty() && productItemList.size > 0) {
                 showProgressDialog(resources.getString(R.string.please_wait))
-                val enquiry =
-                    Enquiry("", enquiryDate, name, phone, location, additionalInfo, productItemList)
-                FireStoreClass().saveEnquiry(this, enquiry)
+                val quotation =
+                    Quotation("", enquiryDate,quoteValidDate, name, phone, location, additionalInfo, productItemList)
+                FireStoreClass().saveEnquiry(this, quotation)
             } else {
                 Toast.makeText(
                     requireContext(),
@@ -209,7 +209,7 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
         if (productItemList.size > 0) {
             binding.clProductsTotal.visibility = View.VISIBLE
             binding.rvSelectedProducts.visibility = View.VISIBLE
-            val adapter = ProductEnquiryAdapter(requireContext(), productItemList)
+            val adapter = ProductQuotationAdapter(requireContext(), productItemList)
             adapter.setOnDeleteClickListener(this)
             binding.rvSelectedProducts.layoutManager = LinearLayoutManager(context)
             binding.rvSelectedProducts.adapter = adapter
@@ -274,7 +274,18 @@ class EnquiryFormFragment : BaseFragment(), ProductEnquiryAdapter.OnDeleteClickL
     }
 
     private fun calculateTotalAndUpdateUI() {
-        total = productItemList.sumByDouble { it.sell_price.toDouble() * it.quantity }
+        total = 0.0
+        for (productItem in productItemList){
+            val productTotal: Double = productItem.sell_price.toDouble() * productItem.quantity
+            // Check if GST was included
+            total += if (productItem.gstIncluded) {
+                // Add GST value to the product total
+                val gstAmount: Double = productTotal * (productItem.gst_rate.toDouble() / 100.0)
+                productTotal + gstAmount
+            } else {
+                productTotal
+            }
+        }
         if (binding.clProductsTotal.visibility != View.VISIBLE) {
             binding.clProductsTotal.visibility = View.VISIBLE
         }
